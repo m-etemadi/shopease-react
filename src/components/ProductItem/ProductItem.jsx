@@ -1,4 +1,5 @@
 import { useShopping } from '../../contexts/ShoppingContext';
+import { formatCurrency } from '../../utils/helpers';
 
 import Button from '../Button';
 
@@ -30,7 +31,7 @@ function ProductItem({ product }) {
       <img src={productImage} alt={productName} />
       <div className="product-cart__details">
         <strong>{productName}</strong>
-        <p>${price}</p>
+        <p>{formatCurrency(price)}</p>
       </div>
       <Button
         onClick={handleAddToCart}

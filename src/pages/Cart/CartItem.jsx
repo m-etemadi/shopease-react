@@ -1,8 +1,9 @@
 import { useShopping } from '../../contexts/ShoppingContext';
-import Button from '../../components/Button';
-
+import { formatCurrency } from '../../utils/helpers';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+
+import Button from '../../components/Button';
 
 function CartItem({ item }) {
   const {
@@ -13,23 +14,15 @@ function CartItem({ item }) {
     increaseItemQuantity,
   } = useShopping();
 
-  // const { totalPrice } = cartItems.at(0);
-
   const { id, productName, price, productImage, totalQuantity } = item;
 
   const currentQuantity = getCurrentQuantityById(id);
 
-  const options = [];
-  for (let i = 1; i <= totalQuantity; i++) {
-    options.push(
-      <option key={i} value={i}>
-        {i}
-      </option>
-    );
-  }
+  const isAvailable = currentQuantity < totalQuantity;
 
-  function handleDelete(e) {
-    e.preventDefault();
+  const totalPrice = getTotalPrice(id);
+
+  function handleDelete() {
     removeFromCart(id);
   }
 
@@ -40,11 +33,11 @@ function CartItem({ item }) {
         <strong className="item-title">{productName}</strong>
         <div className="details">
           <p>
-            Item price: <span>${price}</span>
+            Item price: <span>{formatCurrency(price)}</span>
           </p>
           {currentQuantity > 1 && (
             <p>
-              Total: <span>${getTotalPrice(id)}</span>
+              Total: <span>{formatCurrency(totalPrice)}</span>
             </p>
           )}
           <div>
@@ -55,12 +48,14 @@ function CartItem({ item }) {
               -
             </Button>
             <span className="quantity">{currentQuantity}</span>
-            <Button
-              className="btn btn-quantity"
-              onClick={() => increaseItemQuantity(id)}
-            >
-              +
-            </Button>
+            {isAvailable && (
+              <Button
+                className="btn btn-quantity"
+                onClick={() => increaseItemQuantity(id)}
+              >
+                +
+              </Button>
+            )}
           </div>
         </div>
         <Button className="btn-remove" onClick={handleDelete}>

@@ -1,4 +1,5 @@
 import { useShopping } from '../../contexts/ShoppingContext';
+import { formatCurrency } from '../../utils/helpers';
 import { useNavigate } from 'react-router';
 
 import Button from '../../components/Button';
@@ -10,7 +11,7 @@ function Summary() {
   return (
     <div className="cart-summary">
       <p>
-        Subtotal: <strong className="red">${subtotal}</strong>
+        Subtotal: <strong className="red">{formatCurrency(subtotal)}</strong>
       </p>
       <div>
         <Button className="btn" onClick={() => navigate('/')}>
