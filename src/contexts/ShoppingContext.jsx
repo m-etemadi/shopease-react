@@ -20,6 +20,36 @@ function reducer(state, action) {
         cartItems: state.cartItems.filter(item => item.id !== action.payload),
       };
 
+    case 'product/increased': {
+      const updatedCartItems = state.cartItems.map(item => {
+        if (item.id === action.payload) {
+          return {
+            ...item,
+            quantity: item.quantity + 1,
+            totalPrice: item.totalPrice + item.price,
+          };
+        }
+        return item;
+      });
+
+      return { ...state, cartItems: updatedCartItems };
+    }
+
+    case 'product/decreased': {
+      const updatedCartItems = state.cartItems.map(item => {
+        if (item.id === action.payload) {
+          return {
+            ...item,
+            quantity: item.quantity - 1,
+            totalPrice: item.totalPrice - item.price,
+          };
+        }
+        return item;
+      });
+
+      return { ...state, cartItems: updatedCartItems };
+    }
+
     default:
       throw new Error('Unknown action type');
   }
@@ -30,13 +60,13 @@ function ShoppingProvider({ children }) {
 
   const cartLength = cartItems.length;
 
-  // const totalQuantity = cartItems
-  //   .map(item => item.quantity)
-  //   .reduce((acc, cur) => acc + cur, 0);
+  const totalQuantity = cartItems
+    .map(item => item.quantity)
+    .reduce((acc, cur) => acc + cur, 0);
 
-  // const subtotal = cartItems
-  //   .map(item => item.totalPrice)
-  //   .reduce((acc, cur) => acc + cur, 0);
+  const subtotal = cartItems
+    .map(item => item.totalPrice)
+    .reduce((acc, cur) => acc + cur, 0);
 
   function getCurrentQuantityById(id) {
     return cartItems.find(item => item.id === id)?.quantity ?? 0;
@@ -49,9 +79,7 @@ function ShoppingProvider({ children }) {
 
     dispatch({
       type: 'product/added',
-      payload: {
-        ...item,
-      },
+      payload: item,
     });
   }
 
@@ -62,29 +90,13 @@ function ShoppingProvider({ children }) {
     });
   }
 
-  // function handleDecrease(id) {
-  //   const item = cartItems.find(cartItem => cartItem.id === id);
+  function handleIncrease(id) {
+    dispatch({ type: 'product/increased', payload: id });
+  }
 
-  //   item.quantity--;
-  //   item.totalPrice = item.quantity + item.price;
-
-  //   dispatch({
-  //     type: 'product/decreased',
-  //     payload: id,
-  //   });
-  // }
-
-  // function handleIncrease(id) {
-  //   const item = cartItems.find(cartItem => cartItem.id === id);
-
-  //   item.quantity++;
-  //   item.totalPrice = item.quantity + item.price;
-
-  //   dispatch({
-  //     type: 'product/increased',
-  //     payload: id,
-  //   });
-  // }
+  function handleDecrease(id, quantity) {
+    if (quantity > 0) dispatch({ type: 'product/decreased', payload: id });
+  }
 
   return (
     <ShoppingContext.Provider
@@ -92,10 +104,10 @@ function ShoppingProvider({ children }) {
         cartItems,
         cartLength,
         getCurrentQuantityById,
-        // decreaseItemQuantity: handleDecrease,
-        // increaseItemQuantity: handleIncrease,
-        // totalQuantity,
-        // subtotal,
+        decreaseItemQuantity: handleDecrease,
+        increaseItemQuantity: handleIncrease,
+        totalQuantity,
+        subtotal,
         addToCart: handleAddItem,
         removeFromCart: handleRemoveItem,
         dispatch,

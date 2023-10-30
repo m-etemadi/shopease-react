@@ -1,12 +1,11 @@
 import { useShopping } from '../../contexts/ShoppingContext';
 
 import Button from '../Button';
-import UpdateItemQuantity from './UpdateItemQuantity';
 
 function ProductItem({ product }) {
   const { id, productName, price, productImage, totalQuantity } = product;
 
-  const { cartItems, addToCart, getCurrentQuantityById } = useShopping();
+  const { addToCart, getCurrentQuantityById } = useShopping();
 
   const currentQuantity = getCurrentQuantityById(id);
 

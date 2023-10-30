@@ -10,9 +10,11 @@ function CartItem({ item }) {
     cartItems,
     removeFromCart,
     getCurrentQuantityById,
-    // decreaseItemQuantity,
-    // increaseItemQuantity,
+    decreaseItemQuantity,
+    increaseItemQuantity,
   } = useShopping();
+
+  const { totalPrice } = cartItems.at(0);
 
   const { id, productName, price, productImage, totalQuantity } = item;
 
@@ -32,6 +34,8 @@ function CartItem({ item }) {
     removeFromCart(id);
   }
 
+  if (currentQuantity < 1) return;
+
   return (
     <div className="item">
       <img src={productImage} alt={productName} />
@@ -39,15 +43,19 @@ function CartItem({ item }) {
         <strong className="item-title">{productName}</strong>
         <div>
           <p>
-            Price: <span>${price}</span>
+            Item price: <span>${price}</span>
           </p>
-          <p>
-            Total Price: <span>{cartItems[0].totalPrice}</span>
-          </p>
+          {currentQuantity > 1 && (
+            <p>
+              Total price: <span>${totalPrice}</span>
+            </p>
+          )}
           <div>
-            {/* <Button onClick={() => decreaseItemQuantity(id)}>-</Button> */}
+            <Button onClick={() => decreaseItemQuantity(id, currentQuantity)}>
+              -
+            </Button>
             <span>{currentQuantity}</span>
-            {/* <Button onClick={() => increaseItemQuantity(id)}>+</Button> */}
+            <Button onClick={() => increaseItemQuantity(id)}>+</Button>
           </div>
         </div>
         <Button className="btn-remove" onClick={handleDelete}>
