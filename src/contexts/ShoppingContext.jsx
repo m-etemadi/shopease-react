@@ -50,6 +50,12 @@ function reducer(state, action) {
       return { ...state, cartItems: updatedCartItems };
     }
 
+    case 'cart/cleared':
+      return {
+        ...state,
+        cartItems: [],
+      };
+
     default:
       throw new Error('Unknown action type');
   }
@@ -90,12 +96,18 @@ function ShoppingProvider({ children }) {
     });
   }
 
+  function handleClearCart() {
+    dispatch({
+      type: 'cart/cleared',
+    });
+  }
+
   function handleIncrease(id) {
     dispatch({ type: 'product/increased', payload: id });
   }
 
   function handleDecrease(id, quantity) {
-    if (quantity > 0) dispatch({ type: 'product/decreased', payload: id });
+    if (quantity > 1) dispatch({ type: 'product/decreased', payload: id });
   }
 
   return (
@@ -104,13 +116,13 @@ function ShoppingProvider({ children }) {
         cartItems,
         cartLength,
         getCurrentQuantityById,
-        decreaseItemQuantity: handleDecrease,
         increaseItemQuantity: handleIncrease,
+        decreaseItemQuantity: handleDecrease,
+        clearCart: handleClearCart,
         totalQuantity,
         subtotal,
         addToCart: handleAddItem,
         removeFromCart: handleRemoveItem,
-        dispatch,
       }}
     >
       {children}

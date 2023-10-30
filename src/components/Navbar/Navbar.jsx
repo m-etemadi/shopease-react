@@ -20,7 +20,7 @@ function Navbar() {
         <NavLink to="cart">
           {cartLength > 0 && (
             <span className="cart-badge">
-              {cartLength > 9 ? '+10' : totalQuantity}
+              {totalQuantity > 9 ? '+10' : totalQuantity}
             </span>
           )}
           <FontAwesomeIcon icon={faShoppingCart} size="xl" />

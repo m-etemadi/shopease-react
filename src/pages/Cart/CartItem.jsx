@@ -34,28 +34,34 @@ function CartItem({ item }) {
     removeFromCart(id);
   }
 
-  if (currentQuantity < 1) return;
-
   return (
     <div className="item">
       <img src={productImage} alt={productName} />
       <div className="item__details">
         <strong className="item-title">{productName}</strong>
-        <div>
+        <div className="details">
           <p>
             Item price: <span>${price}</span>
           </p>
           {currentQuantity > 1 && (
             <p>
-              Total price: <span>${totalPrice}</span>
+              Total: <span>${totalPrice}</span>
             </p>
           )}
           <div>
-            <Button onClick={() => decreaseItemQuantity(id, currentQuantity)}>
+            <Button
+              className="btn btn-quantity"
+              onClick={() => decreaseItemQuantity(id, currentQuantity)}
+            >
               -
             </Button>
-            <span>{currentQuantity}</span>
-            <Button onClick={() => increaseItemQuantity(id)}>+</Button>
+            <span className="quantity">{currentQuantity}</span>
+            <Button
+              className="btn btn-quantity"
+              onClick={() => increaseItemQuantity(id)}
+            >
+              +
+            </Button>
           </div>
         </div>
         <Button className="btn-remove" onClick={handleDelete}>

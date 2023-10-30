@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router';
 import Button from '../../components/Button';
 
 function Summary() {
-  const { subtotal } = useShopping();
+  const { subtotal, clearCart } = useShopping();
   const navigate = useNavigate();
 
   return (
@@ -17,6 +17,9 @@ function Summary() {
           Continue Shopping
         </Button>
         <Button className="btn">Go to Cart</Button>
+        <Button className="btn" onClick={clearCart}>
+          Clear Cart
+        </Button>
       </div>
     </div>
   );
