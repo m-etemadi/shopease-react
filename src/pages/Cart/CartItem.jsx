@@ -1,4 +1,3 @@
-// import { useState } from 'react';
 import { useShopping } from '../../contexts/ShoppingContext';
 import Button from '../../components/Button';
 
@@ -7,14 +6,14 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 function CartItem({ item }) {
   const {
-    cartItems,
     removeFromCart,
     getCurrentQuantityById,
+    getTotalPrice,
     decreaseItemQuantity,
     increaseItemQuantity,
   } = useShopping();
 
-  const { totalPrice } = cartItems.at(0);
+  // const { totalPrice } = cartItems.at(0);
 
   const { id, productName, price, productImage, totalQuantity } = item;
 
@@ -45,7 +44,7 @@ function CartItem({ item }) {
           </p>
           {currentQuantity > 1 && (
             <p>
-              Total: <span>${totalPrice}</span>
+              Total: <span>${getTotalPrice(id)}</span>
             </p>
           )}
           <div>

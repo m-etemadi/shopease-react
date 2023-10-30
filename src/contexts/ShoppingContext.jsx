@@ -25,7 +25,7 @@ function reducer(state, action) {
         if (item.id === action.payload) {
           return {
             ...item,
-            quantity: item.quantity + 1,
+            quantity: item.quantity++,
             totalPrice: item.totalPrice + item.price,
           };
         }
@@ -40,7 +40,7 @@ function reducer(state, action) {
         if (item.id === action.payload) {
           return {
             ...item,
-            quantity: item.quantity - 1,
+            quantity: item.quantity--,
             totalPrice: item.totalPrice - item.price,
           };
         }
@@ -76,6 +76,10 @@ function ShoppingProvider({ children }) {
 
   function getCurrentQuantityById(id) {
     return cartItems.find(item => item.id === id)?.quantity ?? 0;
+  }
+
+  function getTotalPrice(id) {
+    return cartItems.find(item => item.id === id)?.totalPrice;
   }
 
   function handleAddItem(item) {
@@ -116,6 +120,7 @@ function ShoppingProvider({ children }) {
         cartItems,
         cartLength,
         getCurrentQuantityById,
+        getTotalPrice,
         increaseItemQuantity: handleIncrease,
         decreaseItemQuantity: handleDecrease,
         clearCart: handleClearCart,
