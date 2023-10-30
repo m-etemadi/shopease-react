@@ -73,7 +73,7 @@ textarea {
   color: var(--color-light--2);
 }
 
-.btn-amount {
+.btn-quantity {
   width: 1.8rem;
   height: 2.2rem;
 }
@@ -87,6 +87,12 @@ textarea {
 
 .red {
   color: var(--color-red);
+}
+
+.added {
+  cursor: not-allowed;
+  background-color: var(--color-dark--0);
+  color: var(--color-light--2);
 }
 
 .navbar {
@@ -189,7 +195,7 @@ textarea {
   font-size: 2.2rem;
 }
 
-.item-amount input {
+.item-quantity input {
   width: 4rem;
   height: 2.2rem;
   text-align: center;

@@ -30,18 +30,28 @@ function ShoppingProvider({ children }) {
 
   const cartLength = cartItems.length;
 
-  const totalQuantity = cartItems
-    .map(item => item.quantity)
-    .reduce((acc, cur) => acc + cur, 0);
+  // const totalQuantity = cartItems
+  //   .map(item => item.quantity)
+  //   .reduce((acc, cur) => acc + cur, 0);
 
-  const subtotal = cartItems
-    .map(item => item.totalPrice)
-    .reduce((acc, cur) => acc + cur, 0);
+  // const subtotal = cartItems
+  //   .map(item => item.totalPrice)
+  //   .reduce((acc, cur) => acc + cur, 0);
+
+  function getCurrentQuantityById(id) {
+    return cartItems.find(item => item.id === id)?.quantity ?? 0;
+  }
 
   function handleAddItem(item) {
+    const existingItem = cartItems.find(cartItem => cartItem.id === item.id);
+
+    if (existingItem) return;
+
     dispatch({
       type: 'product/added',
-      payload: item,
+      payload: {
+        ...item,
+      },
     });
   }
 
@@ -52,13 +62,40 @@ function ShoppingProvider({ children }) {
     });
   }
 
+  // function handleDecrease(id) {
+  //   const item = cartItems.find(cartItem => cartItem.id === id);
+
+  //   item.quantity--;
+  //   item.totalPrice = item.quantity + item.price;
+
+  //   dispatch({
+  //     type: 'product/decreased',
+  //     payload: id,
+  //   });
+  // }
+
+  // function handleIncrease(id) {
+  //   const item = cartItems.find(cartItem => cartItem.id === id);
+
+  //   item.quantity++;
+  //   item.totalPrice = item.quantity + item.price;
+
+  //   dispatch({
+  //     type: 'product/increased',
+  //     payload: id,
+  //   });
+  // }
+
   return (
     <ShoppingContext.Provider
       value={{
         cartItems,
         cartLength,
-        totalQuantity,
-        subtotal,
+        getCurrentQuantityById,
+        // decreaseItemQuantity: handleDecrease,
+        // increaseItemQuantity: handleIncrease,
+        // totalQuantity,
+        // subtotal,
         addToCart: handleAddItem,
         removeFromCart: handleRemoveItem,
         dispatch,

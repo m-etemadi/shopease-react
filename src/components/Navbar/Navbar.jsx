@@ -1,10 +1,10 @@
 import { NavLink } from 'react-router-dom';
-import { useShopping } from '../../contexts/ShoppingContext';
+// import { useShopping } from '../../contexts/ShoppingContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 function Navbar() {
-  const { cartLength, totalQuantity } = useShopping();
+  // const { cartLength, totalQuantity } = useShopping();
 
   return (
     <nav className="navbar">
@@ -18,11 +18,11 @@ function Navbar() {
           </li>
         </ul>
         <NavLink to="cart">
-          {cartLength > 0 && (
+          {/* {cartLength > 0 && (
             <span className="cart-badge">
               {cartLength > 9 ? '+10' : totalQuantity}
             </span>
-          )}
+          )} */}
           <FontAwesomeIcon icon={faShoppingCart} size="xl" />
         </NavLink>
       </div>
