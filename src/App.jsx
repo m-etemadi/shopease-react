@@ -1,5 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ShoppingProvider } from './contexts/ShoppingContext';
+import { AuthProvider } from './contexts/FakeAuthContext';
+import ProtectedRoute from './pages/ProtectedRoute';
 
 import Navbar from './components/Navbar/Navbar';
 import Homepage from './pages/Home/Homepage';
@@ -10,18 +12,27 @@ import Checkout from './pages/Checkout/Checkout';
 
 function App() {
   return (
-    <ShoppingProvider>
-      <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="login" element={<Login />} />
-          <Route path="cart" element={<Cart />} />
-          <Route path="checkout" element={<Checkout />} />
-        </Routes>
-      </BrowserRouter>
-    </ShoppingProvider>
+    <AuthProvider>
+      <ShoppingProvider>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="login" element={<Login />} />
+            <Route path="cart" element={<Cart />} />
+            <Route
+              path="checkout"
+              element={
+                <ProtectedRoute>
+                  <Checkout />
+                </ProtectedRoute>
+              }
+            />
+          </Routes>
+        </BrowserRouter>
+      </ShoppingProvider>
+    </AuthProvider>
   );
 }
 

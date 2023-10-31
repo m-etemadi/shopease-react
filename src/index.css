@@ -51,6 +51,10 @@ textarea {
   padding: 0 1.5rem;
 }
 
+.page-title {
+  margin-bottom: 3rem;
+}
+
 .p-5 {
   padding-top: 5rem;
   padding-bottom: 5rem;

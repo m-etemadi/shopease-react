@@ -9,7 +9,7 @@ function Cart() {
   return (
     <section className="cart p-5">
       <div className="container">
-        <h1>Your cart items</h1>
+        <h2 className="page-title">Your cart items</h2>
 
         <div className="cart-items">
           {cartLength > 0 ? (
