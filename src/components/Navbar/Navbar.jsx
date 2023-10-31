@@ -1,10 +1,12 @@
 import { NavLink } from 'react-router-dom';
 import { useShopping } from '../../contexts/ShoppingContext';
+import { useAuth } from '../../contexts/FakeAuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 function Navbar() {
   const { cartLength, totalQuantity } = useShopping();
+  const { isAuthenticated, user } = useAuth();
 
   return (
     <nav className="navbar">
@@ -18,7 +20,12 @@ function Navbar() {
           </li>
         </ul>
         <div>
-          <NavLink to="login">Login</NavLink>
+          {!isAuthenticated ? (
+            <NavLink to="login">Login</NavLink>
+          ) : (
+            `Welcome, ${user.name}`
+          )}
+
           <NavLink to="cart">
             {cartLength > 0 && (
               <span className="cart-badge">

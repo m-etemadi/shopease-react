@@ -53,6 +53,7 @@ textarea {
 
 .page-title {
   margin-bottom: 3rem;
+  text-align: center;
 }
 
 .p-5 {
@@ -124,6 +125,7 @@ textarea {
   align-items: center;
   justify-content: space-between;
   position: relative;
+  color: var(--color-light--2);
 }
 
 .navbar ul {
@@ -138,7 +140,7 @@ textarea {
 }
 
 .navbar a {
-  color: var(--color-light--2);
+  color: inherit;
   text-decoration: none;
 }
 
@@ -234,4 +236,15 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: space-around;
+}
+
+.login {
+  margin: 0 auto;
+  width: 35rem;
+}
+
+.login input {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  padding: 0.8rem;
 }

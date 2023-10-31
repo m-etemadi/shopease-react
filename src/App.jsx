@@ -12,8 +12,8 @@ import Checkout from './pages/Checkout/Checkout';
 
 function App() {
   return (
-    <AuthProvider>
-      <ShoppingProvider>
+    <ShoppingProvider>
+      <AuthProvider>
         <BrowserRouter>
           <Navbar />
           <Routes>
@@ -31,8 +31,8 @@ function App() {
             />
           </Routes>
         </BrowserRouter>
-      </ShoppingProvider>
-    </AuthProvider>
+      </AuthProvider>
+    </ShoppingProvider>
   );
 }
 

@@ -19,7 +19,12 @@ function Summary() {
         <Button className="btn" onClick={() => navigate('/')}>
           Continue Shopping
         </Button>
-        <Button className="btn" onClick={() => navigate('/checkout')}>
+        <Button
+          className="btn"
+          onClick={() =>
+            navigate(`${isAuthenticated ? '/checkout' : '/login'}`)
+          }
+        >
           Checkout
         </Button>
         <Button className="btn" onClick={clearCart}>
