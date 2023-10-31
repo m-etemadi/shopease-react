@@ -1,17 +1,19 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '../../contexts/FakeAuthContext';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import Button from '../../components/Button';
 
 function Login() {
   // PRE-FILL FOR DEV PURPOSES
-
   const [email, setEmail] = useState('john@ecommerce.com');
   const [password, setPassword] = useState('John1234');
 
   const { login, isAuthenticated } = useAuth();
   const navigate = useNavigate();
+
+  const [searchParams] = useSearchParams();
+  const destination = searchParams.get('destination');
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -21,9 +23,13 @@ function Login() {
 
   useEffect(
     function () {
-      if (isAuthenticated) navigate('/', { replace: true });
+      if (isAuthenticated) {
+        destination
+          ? navigate('/checkout', { replace: true })
+          : navigate('/', { replace: true });
+      }
     },
-    [isAuthenticated, navigate]
+    [isAuthenticated, navigate, destination]
   );
 
   return (

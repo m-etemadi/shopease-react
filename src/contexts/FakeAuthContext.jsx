@@ -19,10 +19,16 @@ function reducer(state, action) {
 }
 
 const FAKE_USER = {
-  name: 'John',
+  name: 'John Smith',
+  address: '6/42 Crown Street',
+  suburb: 'Wollongong',
+  state: 'NSW',
+  code: '2500',
   email: 'john@ecommerce.com',
   password: 'John1234',
-  avatar: 'https://i.pravatar.cc/100?u=zz',
+  cardNum: 5217291895377726,
+  cvv: 199,
+  expDate: '07 / 25',
 };
 
 function AuthProvider({ children }) {

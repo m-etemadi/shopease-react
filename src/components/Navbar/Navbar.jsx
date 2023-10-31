@@ -23,7 +23,7 @@ function Navbar() {
           {!isAuthenticated ? (
             <NavLink to="login">Login</NavLink>
           ) : (
-            `Welcome, ${user.name}`
+            `${user.name}`
           )}
 
           <NavLink to="cart">

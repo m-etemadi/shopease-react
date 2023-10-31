@@ -8,7 +8,14 @@ import Button from '../../components/Button';
 function Summary() {
   const { subtotal, clearCart } = useShopping();
   const { isAuthenticated } = useAuth();
+
   const navigate = useNavigate();
+
+  function handleCheckout() {
+    isAuthenticated
+      ? navigate('/checkout')
+      : navigate('/login?destination=checkout');
+  }
 
   return (
     <div className="cart-summary">
@@ -19,12 +26,7 @@ function Summary() {
         <Button className="btn" onClick={() => navigate('/')}>
           Continue Shopping
         </Button>
-        <Button
-          className="btn"
-          onClick={() =>
-            navigate(`${isAuthenticated ? '/checkout' : '/login'}`)
-          }
-        >
+        <Button className="btn" onClick={handleCheckout}>
           Checkout
         </Button>
         <Button className="btn" onClick={clearCart}>

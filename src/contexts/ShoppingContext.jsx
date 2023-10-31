@@ -4,6 +4,7 @@ const ShoppingContext = createContext();
 
 const initialState = {
   cartItems: [],
+  isPlaced: false,
 };
 
 function reducer(state, action) {
@@ -50,6 +51,14 @@ function reducer(state, action) {
       return { ...state, cartItems: updatedCartItems };
     }
 
+    case 'order/placed': {
+      return {
+        ...state,
+        cartItems: [],
+        isPlaced: true,
+      };
+    }
+
     case 'cart/cleared':
       return {
         ...state,
@@ -62,7 +71,7 @@ function reducer(state, action) {
 }
 
 function ShoppingProvider({ children }) {
-  const [{ cartItems }, dispatch] = useReducer(reducer, initialState);
+  const [{ cartItems, isPlaced }, dispatch] = useReducer(reducer, initialState);
 
   const cartLength = cartItems.length;
 
@@ -114,6 +123,10 @@ function ShoppingProvider({ children }) {
     if (quantity > 1) dispatch({ type: 'product/decreased', payload: id });
   }
 
+  function handlePlaceOrder() {
+    dispatch({ type: 'order/placed' });
+  }
+
   return (
     <ShoppingContext.Provider
       value={{
@@ -124,10 +137,12 @@ function ShoppingProvider({ children }) {
         increaseItemQuantity: handleIncrease,
         decreaseItemQuantity: handleDecrease,
         clearCart: handleClearCart,
+        placeOrder: handlePlaceOrder,
         totalQuantity,
         subtotal,
         addToCart: handleAddItem,
         removeFromCart: handleRemoveItem,
+        isPlaced,
       }}
     >
       {children}
