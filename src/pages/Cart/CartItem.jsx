@@ -9,7 +9,7 @@ function CartItem({ item }) {
   const {
     removeFromCart,
     getCurrentQuantityById,
-    getTotalPrice,
+    getTotalPriceById,
     decreaseItemQuantity,
     increaseItemQuantity,
   } = useShopping();
@@ -20,7 +20,7 @@ function CartItem({ item }) {
 
   const isAvailable = currentQuantity < totalQuantity;
 
-  const totalPrice = getTotalPrice(id);
+  const totalPrice = getTotalPriceById(id);
 
   function handleDelete() {
     removeFromCart(id);

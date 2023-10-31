@@ -129,6 +129,10 @@ textarea {
   column-gap: 3rem;
 }
 
+.navbar .container div a {
+  margin-left: 1.5rem;
+}
+
 .navbar a {
   color: var(--color-light--2);
   text-decoration: none;

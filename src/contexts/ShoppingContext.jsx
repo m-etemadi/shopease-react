@@ -78,7 +78,7 @@ function ShoppingProvider({ children }) {
     return cartItems.find(item => item.id === id)?.quantity ?? 0;
   }
 
-  function getTotalPrice(id) {
+  function getTotalPriceById(id) {
     return cartItems.find(item => item.id === id)?.totalPrice;
   }
 
@@ -120,7 +120,7 @@ function ShoppingProvider({ children }) {
         cartItems,
         cartLength,
         getCurrentQuantityById,
-        getTotalPrice,
+        getTotalPriceById,
         increaseItemQuantity: handleIncrease,
         decreaseItemQuantity: handleDecrease,
         clearCart: handleClearCart,

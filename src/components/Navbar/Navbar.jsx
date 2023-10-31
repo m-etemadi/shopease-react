@@ -17,14 +17,17 @@ function Navbar() {
             <NavLink to="contact">Contact</NavLink>
           </li>
         </ul>
-        <NavLink to="cart">
-          {cartLength > 0 && (
-            <span className="cart-badge">
-              {totalQuantity > 9 ? '+10' : totalQuantity}
-            </span>
-          )}
-          <FontAwesomeIcon icon={faShoppingCart} size="xl" />
-        </NavLink>
+        <div>
+          <NavLink to="login">Login</NavLink>
+          <NavLink to="cart">
+            {cartLength > 0 && (
+              <span className="cart-badge">
+                {totalQuantity > 9 ? '+10' : totalQuantity}
+              </span>
+            )}
+            <FontAwesomeIcon icon={faShoppingCart} size="xl" />
+          </NavLink>
+        </div>
       </div>
     </nav>
   );

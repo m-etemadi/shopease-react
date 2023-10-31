@@ -17,7 +17,9 @@ function Summary() {
         <Button className="btn" onClick={() => navigate('/')}>
           Continue Shopping
         </Button>
-        <Button className="btn">Go to Cart</Button>
+        <Button className="btn" onClick={() => navigate('/checkout')}>
+          Checkout
+        </Button>
         <Button className="btn" onClick={clearCart}>
           Clear Cart
         </Button>
