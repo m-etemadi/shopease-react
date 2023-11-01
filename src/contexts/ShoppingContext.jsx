@@ -71,7 +71,10 @@ function reducer(state, action) {
 }
 
 function ShoppingProvider({ children }) {
-  const [{ cartItems, isPlaced }, dispatch] = useReducer(reducer, initialState);
+  const [{ cartItems, placedOrders }, dispatch] = useReducer(
+    reducer,
+    initialState
+  );
 
   const cartLength = cartItems.length;
 
@@ -151,6 +154,7 @@ function ShoppingProvider({ children }) {
         decreaseItemQuantity: handleDecrease,
         clearCart: handleClearCart,
         placeOrder: handlePlaceOrder,
+        placedOrders,
         totalQuantity,
         subtotal,
         addToCart: handleAddItem,

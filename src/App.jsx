@@ -9,6 +9,7 @@ import Contact from './pages/Contact/Contact';
 import Login from './pages/Login/Login';
 import Cart from './pages/Cart/Cart';
 import Checkout from './pages/Checkout/Checkout';
+import Successful from './pages/Successful/Successful';
 
 function App() {
   return (
@@ -29,7 +30,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route path="successful" element={<Cart />} />
+            <Route path="successful" element={<Successful />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>
