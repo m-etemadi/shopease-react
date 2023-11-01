@@ -1,0 +1,26 @@
+{
+  "placedOrders": [
+    {
+      "0": {
+        "id": 1,
+        "productName": "IPhone 15 Pro Max",
+        "price": 999,
+        "productImage": "/src/assets/images/products/1.png",
+        "quantity": 1,
+        "totalPrice": 999,
+        "totalQuantity": 10
+      },
+      "1": {
+        "id": 2,
+        "productName": "Macbook Pro 2022 (M1)",
+        "price": 1999,
+        "productImage": "/src/assets/images/products/2.png",
+        "quantity": 1,
+        "totalPrice": 1999,
+        "totalQuantity": 6
+      },
+      "orderId": 1698804495626,
+      "id": 1
+    }
+  ]
+}

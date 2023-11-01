@@ -1,10 +1,12 @@
 import { createContext, useContext, useReducer } from 'react';
 
+const BASE_URL = 'http://localhost:9000';
+
 const ShoppingContext = createContext();
 
 const initialState = {
   cartItems: [],
-  isPlaced: false,
+  placedOrders: [],
 };
 
 function reducer(state, action) {
@@ -51,18 +53,16 @@ function reducer(state, action) {
       return { ...state, cartItems: updatedCartItems };
     }
 
-    case 'order/placed': {
-      return {
-        ...state,
-        cartItems: [],
-        isPlaced: true,
-      };
-    }
-
     case 'cart/cleared':
       return {
         ...state,
         cartItems: [],
+      };
+
+    case 'order/placed':
+      return {
+        ...state,
+        placedOrders: [...state.placedOrders, action.payload],
       };
 
     default:
@@ -123,8 +123,21 @@ function ShoppingProvider({ children }) {
     if (quantity > 1) dispatch({ type: 'product/decreased', payload: id });
   }
 
-  function handlePlaceOrder() {
-    dispatch({ type: 'order/placed' });
+  async function handlePlaceOrder(newOrder) {
+    try {
+      const res = await fetch(`${BASE_URL}/placedOrders`, {
+        method: 'POST',
+        body: JSON.stringify(newOrder),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const data = await res.json();
+
+      dispatch({ type: 'order/placed', payload: data });
+    } catch {
+      console.log('rejected');
+    }
   }
 
   return (
@@ -142,7 +155,6 @@ function ShoppingProvider({ children }) {
         subtotal,
         addToCart: handleAddItem,
         removeFromCart: handleRemoveItem,
-        isPlaced,
       }}
     >
       {children}

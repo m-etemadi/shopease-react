@@ -29,6 +29,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
+            <Route path="successful" element={<Cart />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>
