@@ -10,7 +10,8 @@ function Checkout() {
 
   const { name, address, suburb, state, code, cardNum, cvv, expDate } = user;
 
-  const { cartItems, totalQuantity, clearCart, placeOrder } = useShopping();
+  const { cartItems, totalQuantity, clearCart, placeOrder, subtotal } =
+    useShopping();
 
   const navigate = useNavigate();
 
@@ -26,23 +27,31 @@ function Checkout() {
   function handleCheckout(e) {
     e.preventDefault();
 
-    if (
-      !fullName ||
-      !mainAddress ||
-      !mainSuburb ||
-      !mainState ||
-      !mainCode ||
-      !mainCard ||
-      !mainCvv ||
-      !mainExpDate
-    )
-      return;
+    const customerDetails = {
+      fullName,
+      mainAddress,
+      mainSuburb,
+      mainState,
+      mainCode,
+      mainCard,
+      mainCvv,
+      mainExpDate,
+    };
 
-    const item = { orderId: Date.now(), ...cartItems };
+    if (Object.values(customerDetails).some(field => !field)) {
+      return;
+    }
+
+    const item = {
+      id: Date.now(),
+      subtotal,
+      orderItems: [...cartItems],
+      customerDetails,
+    };
 
     placeOrder(item);
     clearCart();
-    navigate('/successful');
+    navigate(`/successful?orderId=${item.id}`);
   }
 
   return (
