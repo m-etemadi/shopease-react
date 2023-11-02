@@ -13,7 +13,7 @@ function Summary() {
 
   function handleCheckout() {
     isAuthenticated
-      ? navigate('/checkout')
+      ? navigate('/order/checkout')
       : navigate('/login?destination=checkout');
   }
 

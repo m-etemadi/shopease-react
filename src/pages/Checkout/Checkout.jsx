@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useShopping } from '../../contexts/ShoppingContext';
 import { useAuth } from '../../contexts/FakeAuthContext';
+import { generateRandomID } from '../../utils/helpers';
 
 import Button from '../../components/Button';
 
@@ -43,7 +44,7 @@ function Checkout() {
     }
 
     const item = {
-      id: Date.now(),
+      id: generateRandomID(),
       subtotal,
       orderItems: [...cartItems],
       customerDetails,
@@ -51,7 +52,7 @@ function Checkout() {
 
     placeOrder(item);
     clearCart();
-    navigate(`/successful?orderId=${item.id}`);
+    navigate(`/order/successful?orderId=${item.id}`);
   }
 
   return (

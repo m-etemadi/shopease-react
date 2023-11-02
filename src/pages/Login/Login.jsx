@@ -25,7 +25,7 @@ function Login() {
     function () {
       if (isAuthenticated) {
         destination
-          ? navigate('/checkout', { replace: true })
+          ? navigate('/order/checkout', { replace: true })
           : navigate('/', { replace: true });
       }
     },

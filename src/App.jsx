@@ -10,6 +10,7 @@ import Login from './pages/Login/Login';
 import Cart from './pages/Cart/Cart';
 import Checkout from './pages/Checkout/Checkout';
 import Successful from './pages/Successful/Successful';
+import Order from './pages/Order/Order';
 
 function App() {
   return (
@@ -23,14 +24,18 @@ function App() {
             <Route path="login" element={<Login />} />
             <Route path="cart" element={<Cart />} />
             <Route
-              path="checkout"
+              path="order"
               element={
                 <ProtectedRoute>
-                  <Checkout />
+                  <Order />
                 </ProtectedRoute>
               }
-            />
-            <Route path="successful" element={<Successful />} />
+            >
+              <Route index element={<Checkout />} />
+              <Route path="checkout" element={<Checkout />} />
+              <Route path="successful" element={<Successful />} />
+              <Route path="successful/:orderId" element={<Successful />} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </AuthProvider>
