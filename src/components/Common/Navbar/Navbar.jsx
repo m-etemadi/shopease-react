@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
-import { useShopping } from '../../contexts/ShoppingContext';
-import { useAuth } from '../../contexts/FakeAuthContext';
+import { useShopping } from '../../../contexts/ShoppingContext';
+import { useAuth } from '../../../contexts/FakeAuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 

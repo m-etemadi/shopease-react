@@ -1,7 +1,7 @@
 import { useShopping } from '../../contexts/ShoppingContext';
 
-import CartItem from './CartItem';
-import Summary from './Summary';
+import CartItem from '../../components/Cart/CartItem';
+import CartSummary from '../../components/Cart/CartSummary';
 
 function Cart() {
   const { cartItems, cartLength } = useShopping();
@@ -17,7 +17,7 @@ function Cart() {
               {cartItems.map(item => (
                 <CartItem key={item.id} item={item} />
               ))}
-              <Summary />
+              <CartSummary />
             </>
           ) : (
             <p>Your cart is empty.</p>

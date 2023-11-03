@@ -4,7 +4,7 @@ import { useShopping } from '../../contexts/ShoppingContext';
 import { useAuth } from '../../contexts/FakeAuthContext';
 import { generateRandomID } from '../../utils/helpers';
 
-import Button from '../../components/Button';
+import Button from '../../components/common/Button';
 
 function Checkout() {
   const { user } = useAuth();
@@ -52,7 +52,7 @@ function Checkout() {
 
     placeOrder(item);
     clearCart();
-    navigate(`/order/successful?orderId=${item.id}`);
+    navigate(`/order/order-success?orderId=${item.id}`);
   }
 
   return (

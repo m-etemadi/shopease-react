@@ -1,14 +1,14 @@
-import product1 from '../assets/images/products/1.png';
-import product2 from '../assets/images/products/2.png';
-import product3 from '../assets/images/products/3.png';
-import product4 from '../assets/images/products/4.png';
-import product5 from '../assets/images/products/5.png';
-import product6 from '../assets/images/products/6.png';
-import product7 from '../assets/images/products/7.png';
-import product8 from '../assets/images/products/8.png';
-import product9 from '../assets/images/products/9.jpeg';
+import product1 from '../src/assets/images/products/1.png';
+import product2 from '../src/assets/images/products/2.png';
+import product3 from '../src/assets/images/products/3.png';
+import product4 from '../src/assets/images/products/4.png';
+import product5 from '../src/assets/images/products/5.png';
+import product6 from '../src/assets/images/products/6.png';
+import product7 from '../src/assets/images/products/7.png';
+import product8 from '../src/assets/images/products/8.png';
+import product9 from '../src/assets/images/products/9.jpeg';
 
-const products = [
+const allProducts = [
   {
     id: 1,
     productName: 'IPhone 15 Pro Max',
@@ -74,4 +74,4 @@ const products = [
   },
 ];
 
-export default products;
+export default allProducts;

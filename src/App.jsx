@@ -1,45 +1,47 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { ShoppingProvider } from './contexts/ShoppingContext';
 import { AuthProvider } from './contexts/FakeAuthContext';
-import ProtectedRoute from './pages/ProtectedRoute';
 
-import Navbar from './components/Navbar/Navbar';
-import Homepage from './pages/Home/Homepage';
+import Navbar from './components/common/Navbar/Navbar';
+import Products from './pages/Products/Product';
 import Contact from './pages/Contact/Contact';
 import Login from './pages/Login/Login';
 import Cart from './pages/Cart/Cart';
 import Checkout from './pages/Checkout/Checkout';
-import Successful from './pages/Successful/Successful';
-import Order from './pages/Order/Order';
+import OrderSuccess from './pages/OrderSuccess/OrderSuccess';
+import ProtectedRoute from './route/ProtectedRoute';
 
 function App() {
   return (
-    <ShoppingProvider>
-      <AuthProvider>
+    <AuthProvider>
+      <ShoppingProvider>
         <BrowserRouter>
           <Navbar />
+
           <Routes>
-            <Route path="/" element={<Homepage />} />
+            <Route path="/" element={<Products />} />
             <Route path="contact" element={<Contact />} />
             <Route path="login" element={<Login />} />
             <Route path="cart" element={<Cart />} />
+
             <Route
               path="order"
               element={
                 <ProtectedRoute>
-                  <Order />
+                  <Route index element={<Checkout />} />
+                  <Route path="checkout" element={<Checkout />} />
+                  <Route path="order-success" element={<OrderSuccess />} />
+                  <Route
+                    path="order-success/:orderId"
+                    element={<OrderSuccess />}
+                  />
                 </ProtectedRoute>
               }
-            >
-              <Route index element={<Checkout />} />
-              <Route path="checkout" element={<Checkout />} />
-              <Route path="successful" element={<Successful />} />
-              <Route path="successful/:orderId" element={<Successful />} />
-            </Route>
+            />
           </Routes>
         </BrowserRouter>
-      </AuthProvider>
-    </ShoppingProvider>
+      </ShoppingProvider>
+    </AuthProvider>
   );
 }
 

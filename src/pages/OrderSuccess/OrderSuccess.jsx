@@ -1,7 +1,7 @@
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import Button from '../../components/Button';
+import Button from '../../components/common/Button';
 
-function Completed() {
+function OrderSuccess() {
   const [searchParams] = useSearchParams();
   const id = searchParams.get('orderId');
   const navigate = useNavigate();
@@ -17,4 +17,4 @@ function Completed() {
   );
 }
 
-export default Completed;
+export default OrderSuccess;

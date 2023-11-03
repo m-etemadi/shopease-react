@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useAuth } from '../../contexts/FakeAuthContext';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
-import Button from '../../components/Button';
+import Button from '../../components/common/Button';
 
 function Login() {
   // PRE-FILL FOR DEV PURPOSES

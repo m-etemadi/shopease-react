@@ -1,7 +1,7 @@
 import { useShopping } from '../../contexts/ShoppingContext';
 import { formatCurrency } from '../../utils/helpers';
 
-import Button from '../Button';
+import Button from '../common/Button';
 
 function ProductItem({ product }) {
   const { id, productName, price, productImage, totalQuantity } = product;

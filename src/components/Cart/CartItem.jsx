@@ -3,7 +3,7 @@ import { formatCurrency } from '../../utils/helpers';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
-import Button from '../../components/Button';
+import Button from '../Common/Button';
 
 function CartItem({ item }) {
   const {

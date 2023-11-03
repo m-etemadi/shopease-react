@@ -3,9 +3,9 @@ import { useAuth } from '../../contexts/FakeAuthContext';
 import { formatCurrency } from '../../utils/helpers';
 import { useNavigate } from 'react-router';
 
-import Button from '../../components/Button';
+import Button from '../Common/Button';
 
-function Summary() {
+function CartSummary() {
   const { subtotal, clearCart } = useShopping();
   const { isAuthenticated } = useAuth();
 
@@ -37,4 +37,4 @@ function Summary() {
   );
 }
 
-export default Summary;
+export default CartSummary;
