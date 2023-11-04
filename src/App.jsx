@@ -7,6 +7,7 @@ import Products from './pages/Products/Product';
 import Contact from './pages/Contact/Contact';
 import Login from './pages/Login/Login';
 import Cart from './pages/Cart/Cart';
+import Order from './pages/Order/Order';
 import Checkout from './pages/Checkout/Checkout';
 import OrderSuccess from './pages/OrderSuccess/OrderSuccess';
 import ProtectedRoute from './route/ProtectedRoute';
@@ -28,16 +29,15 @@ function App() {
               path="order"
               element={
                 <ProtectedRoute>
-                  <Route index element={<Checkout />} />
-                  <Route path="checkout" element={<Checkout />} />
-                  <Route path="order-success" element={<OrderSuccess />} />
-                  <Route
-                    path="order-success/:orderId"
-                    element={<OrderSuccess />}
-                  />
+                  <Order />
                 </ProtectedRoute>
               }
-            />
+            >
+              <Route index element={<Checkout />} />
+              <Route path="checkout" element={<Checkout />} />
+              <Route path="order-success" element={<OrderSuccess />} />
+              <Route path="order-success/:orderId" element={<OrderSuccess />} />
+            </Route>
           </Routes>
         </BrowserRouter>
       </ShoppingProvider>

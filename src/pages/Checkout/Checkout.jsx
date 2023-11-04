@@ -125,7 +125,7 @@ function Checkout() {
               </div>
             </div>
             <div>
-              <Button className="btn" onClick={() => navigate(-1)}>
+              <Button className="btn" onClick={() => navigate('/cart')}>
                 Go back
               </Button>
               <Button className="btn">Place order</Button>

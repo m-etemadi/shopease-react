@@ -6,7 +6,7 @@ const ShoppingContext = createContext();
 
 const initialState = {
   cartItems: [],
-  placedOrders: [],
+  orders: [],
 };
 
 function reducer(state, action) {
@@ -62,7 +62,7 @@ function reducer(state, action) {
     case 'order/placed':
       return {
         ...state,
-        placedOrders: [...state.placedOrders, action.payload],
+        orders: [...state.orders, action.payload],
       };
 
     default:
@@ -71,10 +71,7 @@ function reducer(state, action) {
 }
 
 function ShoppingProvider({ children }) {
-  const [{ cartItems, placedOrders }, dispatch] = useReducer(
-    reducer,
-    initialState
-  );
+  const [{ cartItems, orders }, dispatch] = useReducer(reducer, initialState);
 
   const cartLength = cartItems.length;
 
@@ -128,7 +125,7 @@ function ShoppingProvider({ children }) {
 
   async function handlePlaceOrder(newOrder) {
     try {
-      const res = await fetch(`${BASE_URL}/placedOrders`, {
+      const res = await fetch(`${BASE_URL}/orders`, {
         method: 'POST',
         body: JSON.stringify(newOrder),
         headers: {
@@ -154,7 +151,7 @@ function ShoppingProvider({ children }) {
         decreaseItemQuantity: handleDecrease,
         clearCart: handleClearCart,
         placeOrder: handlePlaceOrder,
-        placedOrders,
+        orders,
         totalQuantity,
         subtotal,
         addToCart: handleAddItem,
