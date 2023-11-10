@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useShopping } from '../../contexts/ShoppingContext';
 import { useAuth } from '../../contexts/FakeAuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faPowerOff, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 function Navbar() {
   const { cartLength, totalQuantity, clearCart } = useShopping();
@@ -32,7 +32,7 @@ function Navbar() {
             <Link to="login">Login</Link>
           ) : (
             <span className="btn-logout" onClick={handleLogout}>
-              Logout
+              <FontAwesomeIcon icon={faPowerOff} size="xl" />
             </span>
           )}
 
