@@ -8,8 +8,8 @@ import Contact from './pages/Contact/Contact';
 import Login from './pages/Login/Login';
 import Cart from './pages/Cart/Cart';
 import Order from './pages/Order/Order';
-import Checkout from './pages/Checkout/Checkout';
-import OrderSuccess from './pages/OrderSuccess/OrderSuccess';
+import Checkout from './pages/Order/Checkout';
+import OrderSuccess from './pages/Order/OrderSuccess';
 import ProtectedRoute from './route/ProtectedRoute';
 
 function App() {
