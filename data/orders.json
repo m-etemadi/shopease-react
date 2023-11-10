@@ -1,29 +1,3 @@
 {
-  "orders": [
-    {
-      "id": "XMST42",
-      "subtotal": 1999,
-      "orderItems": [
-        {
-          "id": 2,
-          "productName": "Macbook Pro 2022 (M1)",
-          "price": 1999,
-          "productImage": "/src/assets/images/products/2.png",
-          "quantity": 1,
-          "totalPrice": 1999,
-          "totalQuantity": 6
-        }
-      ],
-      "customerDetails": {
-        "fullName": "John Smith",
-        "mainAddress": "6/42 Crown Street",
-        "mainSuburb": "Wollongong",
-        "mainState": "NSW",
-        "mainCode": "2500",
-        "mainCard": 5217291895377726,
-        "mainCvv": 199,
-        "mainExpDate": "07 / 25"
-      }
-    }
-  ]
+  "orders": []
 }

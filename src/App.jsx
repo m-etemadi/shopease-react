@@ -13,12 +13,6 @@ const Login = lazy(() => import('./pages/Login/Login'));
 const Cart = lazy(() => import('./pages/Cart/Cart'));
 const Order = lazy(() => import('./pages/Order/Order'));
 
-// import Products from './pages/Products/Product';
-// import Contact from './pages/Contact/Contact';
-// import Login from './pages/Login/Login';
-// import Cart from './pages/Cart/Cart';
-// import Order from './pages/Order/Order';
-
 import Checkout from './pages/Order/Checkout';
 import OrderSuccess from './pages/Order/OrderSuccess';
 

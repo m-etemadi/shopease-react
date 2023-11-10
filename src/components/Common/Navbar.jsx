@@ -1,39 +1,49 @@
-import { NavLink } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useShopping } from '../../contexts/ShoppingContext';
 import { useAuth } from '../../contexts/FakeAuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 function Navbar() {
-  const { cartLength, totalQuantity } = useShopping();
-  const { isAuthenticated, user } = useAuth();
+  const { cartLength, totalQuantity, clearCart } = useShopping();
+  const { isAuthenticated, logout } = useAuth();
+
+  const navigate = useNavigate();
+
+  function handleLogout() {
+    clearCart();
+    logout();
+    navigate('/');
+  }
 
   return (
     <nav className="navbar">
       <div className="container">
         <ul>
           <li>
-            <NavLink to="/">Home</NavLink>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <NavLink to="contact">Contact</NavLink>
+            <Link to="contact">Contact</Link>
           </li>
         </ul>
         <div>
           {!isAuthenticated ? (
-            <NavLink to="login">Login</NavLink>
+            <Link to="login">Login</Link>
           ) : (
-            `${user.name}`
+            <span className="btn-logout" onClick={handleLogout}>
+              Logout
+            </span>
           )}
 
-          <NavLink to="cart">
+          <Link to="cart">
             {cartLength > 0 && (
               <span className="cart-badge">
                 {totalQuantity > 9 ? '+10' : totalQuantity}
               </span>
             )}
             <FontAwesomeIcon icon={faShoppingCart} size="xl" />
-          </NavLink>
+          </Link>
         </div>
       </div>
     </nav>
