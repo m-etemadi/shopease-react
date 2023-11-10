@@ -9,6 +9,8 @@
   --color-light--2: #ececec;
 
   --color-red: #c80d0d;
+
+  --color-green: #23a723;
 }
 
 * {
@@ -289,7 +291,30 @@ textarea {
 }
 
 .completed p {
-  color: #23a723;
+  color: var(--color-green);
   font-size: 2.6rem;
   margin-bottom: 3rem;
+}
+
+.spinner-fullpage {
+  background-color: var(--color-dark--1);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  background: conic-gradient(#0000 10%, var(--color-light--2));
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+  animation: rotate 1.5s infinite linear;
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(1turn);
+  }
 }
