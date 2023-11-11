@@ -1,6 +1,6 @@
 import { useCart } from '../../contexts/CartContext';
 import { useAuth } from '../../contexts/FakeAuthContext';
-import { formatCurrency } from '../../utils/helpers';
+import { calculateTotalByProperty, formatCurrency } from '../../utils/helpers';
 import { useNavigate } from 'react-router';
 
 import Button from '../Common/Button';
@@ -9,9 +9,7 @@ function CartSummary() {
   const { cartItems, clearCart } = useCart();
   const { isAuthenticated } = useAuth();
 
-  const subtotal = cartItems
-    .map(item => item.totalPrice)
-    .reduce((acc, cur) => acc + cur, 0);
+  const subtotal = calculateTotalByProperty(cartItems, 'totalPrice');
 
   const navigate = useNavigate();
 

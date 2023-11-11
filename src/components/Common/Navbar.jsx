@@ -3,6 +3,7 @@ import { useCart } from '../../contexts/CartContext';
 import { useAuth } from '../../contexts/FakeAuthContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPowerOff, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { calculateTotalByProperty } from '../../utils/helpers';
 
 function Navbar() {
   const { cartItems, clearCart } = useCart();
@@ -10,9 +11,7 @@ function Navbar() {
 
   const cartLength = cartItems.length;
 
-  const totalQuantity = cartItems
-    .map(item => item.quantity)
-    .reduce((acc, cur) => acc + cur, 0);
+  const totalQuantity = calculateTotalByProperty(cartItems, 'quantity');
 
   const navigate = useNavigate();
 

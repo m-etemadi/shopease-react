@@ -1,14 +1,14 @@
 import { useCart } from '../../contexts/CartContext';
-import { formatCurrency } from '../../utils/helpers';
+import { getItemPropertyById, formatCurrency } from '../../utils/helpers';
 
 import Button from '../common/Button';
 
 function ProductItem({ product }) {
   const { id, productName, price, productImage, totalQuantity } = product;
 
-  const { addToCart, getCurrentQuantityById } = useCart();
+  const { cartItems, addToCart } = useCart();
 
-  const currentQuantity = getCurrentQuantityById(id);
+  const currentQuantity = getItemPropertyById(id, 'quantity', cartItems);
 
   const isInCart = currentQuantity > 0;
 

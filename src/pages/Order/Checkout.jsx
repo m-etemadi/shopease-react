@@ -3,7 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext';
 import { useOrder } from '../../contexts/OrderContext';
 import { useAuth } from '../../contexts/FakeAuthContext';
-import { generateRandomID } from '../../utils/helpers';
+import {
+  calculateTotalByProperty,
+  generateRandomID,
+} from '../../utils/helpers';
 
 import Button from '../../components/common/Button';
 
@@ -12,9 +15,13 @@ function Checkout() {
 
   const { name, address, suburb, state, code, cardNum, cvv, expDate } = user;
 
-  const { cartItems, totalQuantity, clearCart, subtotal } = useCart();
+  const { cartItems, clearCart } = useCart();
 
   const { placeOrder } = useOrder();
+
+  const totalQuantity = calculateTotalByProperty(cartItems, 'quantity');
+
+  const subtotal = calculateTotalByProperty(cartItems, 'totalPrice');
 
   const navigate = useNavigate();
 

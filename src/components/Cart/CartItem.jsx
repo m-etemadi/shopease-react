@@ -1,5 +1,5 @@
 import { useCart } from '../../contexts/CartContext';
-import { formatCurrency } from '../../utils/helpers';
+import { getItemPropertyById, formatCurrency } from '../../utils/helpers';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
@@ -7,20 +7,18 @@ import Button from '../Common/Button';
 
 function CartItem({ item }) {
   const {
-    removeFromCart,
-    getCurrentQuantityById,
-    getTotalPriceById,
-    decreaseItemQuantity,
+    cartItems,
     increaseItemQuantity,
+    decreaseItemQuantity,
+    removeFromCart,
   } = useCart();
 
   const { id, productName, price, productImage, totalQuantity } = item;
 
-  const currentQuantity = getCurrentQuantityById(id);
+  const currentQuantity = getItemPropertyById(id, 'quantity', cartItems);
+  const totalPrice = getItemPropertyById(id, 'totalPrice', cartItems);
 
   const isAvailable = currentQuantity < totalQuantity;
-
-  const totalPrice = getTotalPriceById(id);
 
   function handleDelete() {
     removeFromCart(id);

@@ -64,14 +64,6 @@ function reducer(state, action) {
 function CartProvider({ children }) {
   const [{ cartItems }, dispatch] = useReducer(reducer, initialState);
 
-  function getCurrentQuantityById(id) {
-    return cartItems.find(item => item.id === id)?.quantity ?? 0;
-  }
-
-  function getTotalPriceById(id) {
-    return cartItems.find(item => item.id === id)?.totalPrice;
-  }
-
   function handleAddItem(item) {
     const existingItem = cartItems.find(cartItem => cartItem.id === item.id);
 
@@ -108,13 +100,11 @@ function CartProvider({ children }) {
     <CartContext.Provider
       value={{
         cartItems,
-        getCurrentQuantityById,
-        getTotalPriceById,
         increaseItemQuantity: handleIncrease,
         decreaseItemQuantity: handleDecrease,
-        clearCart: handleClearCart,
         addToCart: handleAddItem,
         removeFromCart: handleRemoveItem,
+        clearCart: handleClearCart,
       }}
     >
       {children}

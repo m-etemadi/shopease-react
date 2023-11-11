@@ -4,7 +4,9 @@ import CartItem from '../../components/Cart/CartItem';
 import CartSummary from '../../components/Cart/CartSummary';
 
 function Cart() {
-  const { cartItems, cartLength } = useCart();
+  const { cartItems } = useCart();
+
+  const cartLength = cartItems.length;
 
   return (
     <section className="cart p-5">
