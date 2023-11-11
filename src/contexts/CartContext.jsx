@@ -1,12 +1,9 @@
 import { createContext, useContext, useReducer } from 'react';
 
-const BASE_URL = 'http://localhost:9000';
-
-const ShoppingContext = createContext();
+const CartContext = createContext();
 
 const initialState = {
   cartItems: [],
-  orders: [],
 };
 
 function reducer(state, action) {
@@ -59,22 +56,17 @@ function reducer(state, action) {
         cartItems: [],
       };
 
-    case 'order/placed':
-      return {
-        ...state,
-        orders: [...state.orders, action.payload],
-      };
-
     default:
       throw new Error('Unknown action type');
   }
 }
 
-function ShoppingProvider({ children }) {
-  const [{ cartItems, orders }, dispatch] = useReducer(reducer, initialState);
+function CartProvider({ children }) {
+  const [{ cartItems }, dispatch] = useReducer(reducer, initialState);
 
   const cartLength = cartItems.length;
 
+  // conver the following two into one function
   const totalQuantity = cartItems
     .map(item => item.quantity)
     .reduce((acc, cur) => acc + cur, 0);
@@ -123,25 +115,8 @@ function ShoppingProvider({ children }) {
     if (quantity > 1) dispatch({ type: 'product/decreased', payload: id });
   }
 
-  async function handlePlaceOrder(newOrder) {
-    try {
-      const res = await fetch(`${BASE_URL}/orders`, {
-        method: 'POST',
-        body: JSON.stringify(newOrder),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      const data = await res.json();
-
-      dispatch({ type: 'order/placed', payload: data });
-    } catch {
-      console.log('rejected');
-    }
-  }
-
   return (
-    <ShoppingContext.Provider
+    <CartContext.Provider
       value={{
         cartItems,
         cartLength,
@@ -150,8 +125,6 @@ function ShoppingProvider({ children }) {
         increaseItemQuantity: handleIncrease,
         decreaseItemQuantity: handleDecrease,
         clearCart: handleClearCart,
-        placeOrder: handlePlaceOrder,
-        orders,
         totalQuantity,
         subtotal,
         addToCart: handleAddItem,
@@ -159,15 +132,15 @@ function ShoppingProvider({ children }) {
       }}
     >
       {children}
-    </ShoppingContext.Provider>
+    </CartContext.Provider>
   );
 }
 
-function useShopping() {
-  const context = useContext(ShoppingContext);
+function useCart() {
+  const context = useContext(CartContext);
   if (context === undefined)
-    throw new Error('ShoppingContext was used outside the ShoppingProvider');
+    throw new Error('CartContext was used outside the CartProvider');
   return context;
 }
 
-export { ShoppingProvider, useShopping };
+export { CartProvider, useCart };

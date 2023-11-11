@@ -1,10 +1,10 @@
-import { useShopping } from '../../contexts/ShoppingContext';
+import { useCart } from '../../contexts/CartContext';
 
 import CartItem from '../../components/Cart/CartItem';
 import CartSummary from '../../components/Cart/CartSummary';
 
 function Cart() {
-  const { cartItems, cartLength } = useShopping();
+  const { cartItems, cartLength } = useCart();
 
   return (
     <section className="cart p-5">

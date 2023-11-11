@@ -1,4 +1,4 @@
-import { useShopping } from '../../contexts/ShoppingContext';
+import { useCart } from '../../contexts/CartContext';
 import { formatCurrency } from '../../utils/helpers';
 
 import Button from '../common/Button';
@@ -6,7 +6,7 @@ import Button from '../common/Button';
 function ProductItem({ product }) {
   const { id, productName, price, productImage, totalQuantity } = product;
 
-  const { addToCart, getCurrentQuantityById } = useShopping();
+  const { addToCart, getCurrentQuantityById } = useCart();
 
   const currentQuantity = getCurrentQuantityById(id);
 

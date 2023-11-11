@@ -1,4 +1,4 @@
-import { useShopping } from '../../contexts/ShoppingContext';
+import { useCart } from '../../contexts/CartContext';
 import { formatCurrency } from '../../utils/helpers';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -12,7 +12,7 @@ function CartItem({ item }) {
     getTotalPriceById,
     decreaseItemQuantity,
     increaseItemQuantity,
-  } = useShopping();
+  } = useCart();
 
   const { id, productName, price, productImage, totalQuantity } = item;
 

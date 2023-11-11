@@ -1,4 +1,4 @@
-import { useShopping } from '../../contexts/ShoppingContext';
+import { useCart } from '../../contexts/CartContext';
 import { useAuth } from '../../contexts/FakeAuthContext';
 import { formatCurrency } from '../../utils/helpers';
 import { useNavigate } from 'react-router';
@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router';
 import Button from '../Common/Button';
 
 function CartSummary() {
-  const { subtotal, clearCart } = useShopping();
+  const { subtotal, clearCart } = useCart();
   const { isAuthenticated } = useAuth();
 
   const navigate = useNavigate();

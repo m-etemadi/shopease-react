@@ -1,6 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { ShoppingProvider } from './contexts/ShoppingContext';
+import { CartProvider } from './contexts/CartContext';
 import { AuthProvider } from './contexts/FakeAuthContext';
 import ProtectedRoute from './route/ProtectedRoute';
 
@@ -19,7 +19,7 @@ import OrderSuccess from './pages/Order/OrderSuccess';
 function App() {
   return (
     <AuthProvider>
-      <ShoppingProvider>
+      <CartProvider>
         <BrowserRouter>
           <Navbar />
 
@@ -49,7 +49,7 @@ function App() {
             </Routes>
           </Suspense>
         </BrowserRouter>
-      </ShoppingProvider>
+      </CartProvider>
     </AuthProvider>
   );
 }
