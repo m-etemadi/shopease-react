@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../contexts/CartContext';
+import { useOrder } from '../../contexts/OrderContext';
 import { useAuth } from '../../contexts/FakeAuthContext';
 import { generateRandomID } from '../../utils/helpers';
 
@@ -11,8 +12,9 @@ function Checkout() {
 
   const { name, address, suburb, state, code, cardNum, cvv, expDate } = user;
 
-  const { cartItems, totalQuantity, clearCart, placeOrder, subtotal } =
-    useCart();
+  const { cartItems, totalQuantity, clearCart, subtotal } = useCart();
+
+  const { placeOrder } = useOrder();
 
   const navigate = useNavigate();
 

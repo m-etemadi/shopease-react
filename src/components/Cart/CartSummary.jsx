@@ -6,8 +6,12 @@ import { useNavigate } from 'react-router';
 import Button from '../Common/Button';
 
 function CartSummary() {
-  const { subtotal, clearCart } = useCart();
+  const { cartItems, clearCart } = useCart();
   const { isAuthenticated } = useAuth();
+
+  const subtotal = cartItems
+    .map(item => item.totalPrice)
+    .reduce((acc, cur) => acc + cur, 0);
 
   const navigate = useNavigate();
 

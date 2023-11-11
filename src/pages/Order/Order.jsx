@@ -1,7 +1,12 @@
 import { Outlet } from 'react-router-dom';
+import { OrderProvider } from '../../contexts/OrderContext';
 
 function Order() {
-  return <Outlet />;
+  return (
+    <OrderProvider>
+      <Outlet />
+    </OrderProvider>
+  );
 }
 
 export default Order;

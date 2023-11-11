@@ -64,17 +64,6 @@ function reducer(state, action) {
 function CartProvider({ children }) {
   const [{ cartItems }, dispatch] = useReducer(reducer, initialState);
 
-  const cartLength = cartItems.length;
-
-  // conver the following two into one function
-  const totalQuantity = cartItems
-    .map(item => item.quantity)
-    .reduce((acc, cur) => acc + cur, 0);
-
-  const subtotal = cartItems
-    .map(item => item.totalPrice)
-    .reduce((acc, cur) => acc + cur, 0);
-
   function getCurrentQuantityById(id) {
     return cartItems.find(item => item.id === id)?.quantity ?? 0;
   }
@@ -119,14 +108,11 @@ function CartProvider({ children }) {
     <CartContext.Provider
       value={{
         cartItems,
-        cartLength,
         getCurrentQuantityById,
         getTotalPriceById,
         increaseItemQuantity: handleIncrease,
         decreaseItemQuantity: handleDecrease,
         clearCart: handleClearCart,
-        totalQuantity,
-        subtotal,
         addToCart: handleAddItem,
         removeFromCart: handleRemoveItem,
       }}

@@ -5,8 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPowerOff, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 function Navbar() {
-  const { cartLength, totalQuantity, clearCart } = useCart();
+  const { cartItems, clearCart } = useCart();
   const { isAuthenticated, logout } = useAuth();
+
+  const cartLength = cartItems.length;
+
+  const totalQuantity = cartItems
+    .map(item => item.quantity)
+    .reduce((acc, cur) => acc + cur, 0);
 
   const navigate = useNavigate();
 
