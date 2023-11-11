@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from 'react';
+import { createContext, useCallback, useContext, useReducer } from 'react';
 
 const CartContext = createContext();
 
@@ -20,60 +20,69 @@ function reducer(state, action) {
         cartItems: state.cartItems.filter(item => item.id !== action.payload),
       };
 
-    case 'product/increased': {
-      const updatedCartItems = state.cartItems.map(item => {
-        if (item.id === action.payload) {
-          return {
-            ...item,
-            quantity: item.quantity++,
-            totalPrice: item.totalPrice + item.price,
-          };
-        }
-        return item;
-      });
-
-      return { ...state, cartItems: updatedCartItems };
-    }
-
-    case 'product/decreased': {
-      const updatedCartItems = state.cartItems.map(item => {
-        if (item.id === action.payload) {
-          return {
-            ...item,
-            quantity: item.quantity--,
-            totalPrice: item.totalPrice - item.price,
-          };
-        }
-        return item;
-      });
-
-      return { ...state, cartItems: updatedCartItems };
-    }
-
     case 'cart/cleared':
       return {
         ...state,
         cartItems: [],
       };
 
+    case 'product/increased':
+      return handleItemIncrease(state, action.payload);
+
+    case 'product/decreased':
+      return handleItemDecrease(state, action.payload);
+
     default:
       throw new Error('Unknown action type');
   }
 }
 
+const handleItemIncrease = (state, itemId) => {
+  const updatedCartItems = state.cartItems.map(item => {
+    if (item.id === itemId) {
+      return {
+        ...item,
+        quantity: item.quantity + 1,
+        totalPrice: item.totalPrice + item.price,
+      };
+    }
+    return item;
+  });
+
+  return { ...state, cartItems: updatedCartItems };
+};
+
+const handleItemDecrease = (state, itemId) => {
+  const updatedCartItems = state.cartItems.map(item => {
+    if (item.id === itemId) {
+      return {
+        ...item,
+        quantity: item.quantity - 1,
+        totalPrice: item.totalPrice - item.price,
+      };
+    }
+    return item;
+  });
+
+  return { ...state, cartItems: updatedCartItems };
+};
+
 function CartProvider({ children }) {
   const [{ cartItems }, dispatch] = useReducer(reducer, initialState);
 
-  function handleAddItem(item) {
-    const existingItem = cartItems.find(cartItem => cartItem.id === item.id);
+  const handleAddItem = useCallback(
+    item => {
+      const existingItem = cartItems.find(cartItem => cartItem.id === item.id);
 
-    if (existingItem) return;
+      if (existingItem) return;
 
-    dispatch({
-      type: 'product/added',
-      payload: item,
-    });
-  }
+      dispatch({
+        type: 'product/added',
+        payload: item,
+      });
+    },
+    [cartItems]
+  );
 
   function handleRemoveItem(id) {
     dispatch({
