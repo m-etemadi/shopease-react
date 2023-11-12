@@ -1,5 +1,3 @@
-import { memo } from 'react';
-
 import { useCart } from '../../contexts/CartContext';
 
 import CartItem from '../../components/Cart/CartItem/CartItem';
@@ -29,4 +27,4 @@ function Cart() {
   );
 }
 
-export default memo(Cart);
+export default Cart;
