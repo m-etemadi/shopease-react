@@ -1,5 +1,6 @@
-import ProductItem from '../../components/Products/ProductItem';
 import allProducts from '../../../data/allProducts';
+
+import ProductItem from '../../components/Products/ProductItem';
 
 function Products() {
   return (

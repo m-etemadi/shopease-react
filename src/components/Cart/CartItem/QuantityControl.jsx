@@ -1,12 +1,12 @@
-import Button from '../../common/Button';
-
 import { useCart } from '../../../contexts/CartContext';
 import { getItemPropertyById } from '../../../utils/helpers';
 
-function QuantityControl({ item }) {
-  const { cartItems, increaseItemQuantity, decreaseItemQuantity } = useCart();
+import Button from '../../common/Button';
 
+function QuantityControl({ item }) {
   const { id, totalQuantity } = item;
+
+  const { cartItems, increaseItemQuantity, decreaseItemQuantity } = useCart();
 
   const currentQuantity = getItemPropertyById(id, 'quantity', cartItems);
   const isAvailable = currentQuantity < totalQuantity;

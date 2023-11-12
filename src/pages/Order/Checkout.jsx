@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 import { useCart } from '../../contexts/CartContext';
 import { useOrder } from '../../contexts/OrderContext';
 import { useAuth } from '../../contexts/FakeAuthContext';
@@ -12,18 +13,14 @@ import Button from '../../components/common/Button';
 
 function Checkout() {
   const { user } = useAuth();
+  const { cartItems, clearCart } = useCart();
+  const { placeOrder } = useOrder();
+  const navigate = useNavigate();
 
   const { name, address, suburb, state, code, cardNum, cvv, expDate } = user;
 
-  const { cartItems, clearCart } = useCart();
-
-  const { placeOrder } = useOrder();
-
   const totalQuantity = calculateTotalByProperty(cartItems, 'quantity');
-
   const subtotal = calculateTotalByProperty(cartItems, 'totalPrice');
-
-  const navigate = useNavigate();
 
   const [fullName, setFullName] = useState(name);
   const [mainAddress, setMainAddress] = useState(address);
@@ -55,7 +52,7 @@ function Checkout() {
     const item = {
       id: generateRandomID(),
       subtotal,
-      orderItems: [...cartItems],
+      orderedItems: [...cartItems],
       customerDetails,
     };
 

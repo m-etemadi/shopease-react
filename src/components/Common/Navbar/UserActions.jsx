@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { useCart } from '../../../contexts/CartContext';
 import { useAuth } from '../../../contexts/FakeAuthContext';
-
 import { calculateTotalByProperty } from '../../../utils/helpers';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -12,12 +11,10 @@ import { faPowerOff, faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 function UserActions() {
   const { cartItems, clearCart } = useCart();
   const { isAuthenticated, logout } = useAuth();
+  const navigate = useNavigate();
 
   const cartLength = cartItems.length;
-
   const totalQuantity = calculateTotalByProperty(cartItems, 'quantity');
-
-  const navigate = useNavigate();
 
   function handleLogout() {
     clearCart();

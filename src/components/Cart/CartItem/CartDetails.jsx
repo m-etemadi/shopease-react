@@ -1,7 +1,7 @@
-import QuantityControl from './QuantityControl';
-
 import { useCart } from '../../../contexts/CartContext';
 import { getItemPropertyById, formatCurrency } from '../../../utils/helpers';
+
+import QuantityControl from './QuantityControl';
 
 function CartDetails({ item }) {
   const { id, price } = item;

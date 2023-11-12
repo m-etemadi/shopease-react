@@ -4,11 +4,11 @@ import { useAuth } from '../../contexts/FakeAuthContext';
 import Button from '../common/Button';
 
 function LoginForm() {
+  const { login } = useAuth();
+
   // PRE-FILL FOR DEV PURPOSES
   const [email, setEmail] = useState('john@ecommerce.com');
   const [password, setPassword] = useState('John1234');
-
-  const { login } = useAuth();
 
   function handleLogin(e) {
     e.preventDefault();

@@ -9,7 +9,6 @@ function ProductItem({ product }) {
   const { cartItems, addToCart } = useCart();
 
   const currentQuantity = getItemPropertyById(id, 'quantity', cartItems);
-
   const isInCart = currentQuantity > 0;
 
   function handleAddToCart() {

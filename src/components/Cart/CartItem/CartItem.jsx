@@ -1,15 +1,15 @@
 import { useCart } from '../../../contexts/CartContext';
 
+import CartDetails from './CartDetails';
 import Button from '../../Common/Button';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import CartDetails from './CartDetails';
 
 function CartItem({ item }) {
-  const { removeFromCart } = useCart();
-
   const { id, productName, productImage } = item;
+
+  const { removeFromCart } = useCart();
 
   function handleDelete() {
     removeFromCart(id);

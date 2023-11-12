@@ -1,14 +1,15 @@
 import { useEffect } from 'react';
-import { useAuth } from '../../contexts/FakeAuthContext';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+
+import { useAuth } from '../../contexts/FakeAuthContext';
 
 import LoginForm from '../../components/Login/LoginForm';
 
 function Login() {
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
-
   const [searchParams] = useSearchParams();
+
   const destination = searchParams.get('destination');
 
   useEffect(
