@@ -1,6 +1,8 @@
+import { memo } from 'react';
+
 import { useCart } from '../../contexts/CartContext';
 
-import CartItem from '../../components/Cart/CartItem';
+import CartItem from '../../components/Cart/CartItem/CartItem';
 import CartSummary from '../../components/Cart/CartSummary';
 import Message from '../../components/Common/Message';
 
@@ -16,19 +18,15 @@ function Cart() {
 
         <div className="cart-items">
           {cartLength > 0 ? (
-            <>
-              {cartItems.map(item => (
-                <CartItem key={item.id} item={item} />
-              ))}
-              <CartSummary />
-            </>
+            cartItems.map(item => <CartItem key={item.id} item={item} />)
           ) : (
             <Message message="Your cart is empty" />
           )}
+          {cartLength > 0 && <CartSummary />}
         </div>
       </div>
     </section>
   );
 }
 
-export default Cart;
+export default memo(Cart);

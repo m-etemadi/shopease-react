@@ -1,6 +1,9 @@
+import { memo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+
 import { useCart } from '../../../contexts/CartContext';
 import { useAuth } from '../../../contexts/FakeAuthContext';
+
 import { calculateTotalByProperty } from '../../../utils/helpers';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -44,4 +47,4 @@ function UserActions() {
   );
 }
 
-export default UserActions;
+export default memo(UserActions);
