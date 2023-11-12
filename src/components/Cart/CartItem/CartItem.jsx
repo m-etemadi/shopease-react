@@ -1,31 +1,16 @@
-import { useCart } from '../../../contexts/CartContext';
-
-import CartDetails from './CartDetails';
-import Button from '../../Common/Button';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import CartItemProperty from './CartItemProperty';
+import CartItemControl from './CartItemControl';
 
 function CartItem({ item }) {
-  const { id, productName, productImage } = item;
-
-  const { removeFromCart } = useCart();
-
-  function handleDelete() {
-    removeFromCart(id);
-  }
+  const { productName, productImage } = item;
 
   return (
     <div className="item">
       <img src={productImage} alt={productName} />
+
       <div className="item__details">
-        <strong className="item-title">{productName}</strong>
-
-        <CartDetails item={item} />
-
-        <Button className="btn-remove" onClick={handleDelete}>
-          <FontAwesomeIcon icon={faTrash} size="xl" />
-        </Button>
+        <CartItemProperty item={item} />
+        <CartItemControl item={item} />
       </div>
     </div>
   );

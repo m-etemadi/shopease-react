@@ -1,10 +1,8 @@
 import { useCart } from '../../../contexts/CartContext';
 import { getItemPropertyById, formatCurrency } from '../../../utils/helpers';
 
-import QuantityControl from './QuantityControl';
-
-function CartDetails({ item }) {
-  const { id, price } = item;
+function CartItemProperty({ item }) {
+  const { id, productName, price } = item;
 
   const { cartItems } = useCart();
 
@@ -12,7 +10,8 @@ function CartDetails({ item }) {
   const totalPrice = getItemPropertyById(id, 'totalPrice', cartItems);
 
   return (
-    <div className="details">
+    <div className="item__property">
+      <strong className="item-title">{productName}</strong>
       <p>
         Item price: <span>{formatCurrency(price)}</span>
       </p>
@@ -21,9 +20,8 @@ function CartDetails({ item }) {
           Total: <span>{formatCurrency(totalPrice)}</span>
         </p>
       )}
-      <QuantityControl item={item} />
     </div>
   );
 }
 
-export default CartDetails;
+export default CartItemProperty;
