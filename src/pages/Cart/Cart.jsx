@@ -2,6 +2,7 @@ import { useCart } from '../../contexts/CartContext';
 
 import CartItem from '../../components/Cart/CartItem';
 import CartSummary from '../../components/Cart/CartSummary';
+import Message from '../../components/Common/Message';
 
 function Cart() {
   const { cartItems } = useCart();
@@ -22,7 +23,7 @@ function Cart() {
               <CartSummary />
             </>
           ) : (
-            <p>Your cart is empty.</p>
+            <Message message="Your cart is empty" />
           )}
         </div>
       </div>

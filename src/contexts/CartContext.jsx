@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useReducer } from 'react';
+import { createContext, useContext, useReducer } from 'react';
 
 const CartContext = createContext();
 
@@ -70,19 +70,16 @@ const handleItemDecrease = (state, itemId) => {
 function CartProvider({ children }) {
   const [{ cartItems }, dispatch] = useReducer(reducer, initialState);
 
-  const handleAddItem = useCallback(
-    item => {
-      const existingItem = cartItems.find(cartItem => cartItem.id === item.id);
+  function handleAddItem(item) {
+    const existingItem = cartItems.find(cartItem => cartItem.id === item.id);
 
-      if (existingItem) return;
+    if (existingItem) return;
 
-      dispatch({
-        type: 'product/added',
-        payload: item,
-      });
-    },
-    [cartItems]
-  );
+    dispatch({
+      type: 'product/added',
+      payload: item,
+    });
+  }
 
   function handleRemoveItem(id) {
     dispatch({

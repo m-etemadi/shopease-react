@@ -4,7 +4,7 @@ import { CartProvider } from './contexts/CartContext';
 import { AuthProvider } from './contexts/FakeAuthContext';
 import ProtectedRoute from './route/ProtectedRoute';
 
-import Navbar from './components/common/Navbar';
+import Navbar from './components/common/Navbar/Navbar';
 import SpinnerFullPage from './components/Common/SpinnerFullPage';
 
 const Products = lazy(() => import('./pages/Products/Product'));
