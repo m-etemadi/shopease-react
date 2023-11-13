@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import { useCart } from '../../contexts/CartContext';
 import { useOrder } from '../../contexts/OrderContext';
@@ -11,9 +12,12 @@ import {
 import Button from '../../components/common/Button';
 
 function Checkout() {
-  const { user } = useAuth();
   const { cartItems, clearCart } = useCart();
+  const { user } = useAuth();
   const { placeOrder } = useOrder();
+  const navigate = useNavigate();
+
+  const cartLength = cartItems.length;
 
   const { name, address, cardNum, cvv, expDate } = user;
 
@@ -25,6 +29,12 @@ function Checkout() {
   const [mainCard, setMainCard] = useState(cardNum);
   const [mainCvv, setMainCvv] = useState(cvv);
   const [mainExpDate, setMainExpDate] = useState(expDate);
+
+  useEffect(() => {
+    if (cartLength < 1) navigate(-1);
+  }, [cartLength, navigate]);
+
+  if (cartItems.length < 1) return;
 
   function handleCheckout(e) {
     e.preventDefault();
@@ -49,7 +59,9 @@ function Checkout() {
     };
 
     placeOrder(item);
+
     alert(`Order placed successfully! Order number: ${item.id}`);
+    navigate('/');
     clearCart();
   }
 

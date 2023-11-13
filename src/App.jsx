@@ -15,6 +15,7 @@ import Checkout from './pages/Order/Checkout';
 
 import Navbar from './components/common/Navbar/Navbar';
 import SpinnerFullPage from './components/Common/SpinnerFullPage';
+import { OrderProvider } from './contexts/OrderContext';
 
 function App() {
   return (
