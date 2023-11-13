@@ -1,0 +1,1 @@
+import{j as t}from"./index-405a4665.js";function a(){return t.jsx("section",{className:"contact p-5",children:t.jsx("div",{className:"container",children:t.jsx("h2",{className:"page-title",children:"Contact Us"})})})}export{a as default};
