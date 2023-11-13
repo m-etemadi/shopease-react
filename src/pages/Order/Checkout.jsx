@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import { useCart } from '../../contexts/CartContext';
 import { useOrder } from '../../contexts/OrderContext';
@@ -15,18 +14,14 @@ function Checkout() {
   const { user } = useAuth();
   const { cartItems, clearCart } = useCart();
   const { placeOrder } = useOrder();
-  const navigate = useNavigate();
 
-  const { name, address, suburb, state, code, cardNum, cvv, expDate } = user;
+  const { name, address, cardNum, cvv, expDate } = user;
 
   const totalQuantity = calculateTotalByProperty(cartItems, 'quantity');
   const subtotal = calculateTotalByProperty(cartItems, 'totalPrice');
 
   const [fullName, setFullName] = useState(name);
   const [mainAddress, setMainAddress] = useState(address);
-  const [mainSuburb, setMainSuburb] = useState(suburb);
-  const [mainState, setMainState] = useState(state);
-  const [mainCode, setMainCode] = useState(code);
   const [mainCard, setMainCard] = useState(cardNum);
   const [mainCvv, setMainCvv] = useState(cvv);
   const [mainExpDate, setMainExpDate] = useState(expDate);
@@ -37,9 +32,6 @@ function Checkout() {
     const customerDetails = {
       fullName,
       mainAddress,
-      mainSuburb,
-      mainState,
-      mainCode,
       mainCard,
       mainCvv,
       mainExpDate,
@@ -57,8 +49,8 @@ function Checkout() {
     };
 
     placeOrder(item);
+    alert(`Order placed successfully! Order number: ${item.id}`);
     clearCart();
-    navigate(`/order/order-success?orderId=${item.id}`);
   }
 
   return (
@@ -86,25 +78,6 @@ function Checkout() {
                   type="text"
                   value={mainAddress}
                   onChange={e => setMainAddress(e.target.value)}
-                />
-              </div>
-              <div className="single-input">
-                <input
-                  type="text"
-                  value={mainSuburb}
-                  onChange={e => setMainSuburb(e.target.value)}
-                />
-              </div>
-              <div className="double-input">
-                <input
-                  type="text"
-                  value={mainState}
-                  onChange={e => setMainState(e.target.value)}
-                />
-                <input
-                  type="text"
-                  value={mainCode}
-                  onChange={e => setMainCode(e.target.value)}
                 />
               </div>
             </div>

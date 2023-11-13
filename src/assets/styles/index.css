@@ -39,6 +39,7 @@ body {
   color: var(--color-dark--0);
   font-weight: 400;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 input,
@@ -303,7 +304,6 @@ textarea {
 }
 
 .spinner-fullpage {
-  background-color: var(--color-dark--1);
   height: 100vh;
   display: flex;
   align-items: center;
@@ -314,8 +314,8 @@ textarea {
   width: 6rem;
   height: 6rem;
   border-radius: 50%;
-  background: conic-gradient(#0000 10%, var(--color-light--2));
-  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 8px), #000 0);
+  background: conic-gradient(#0000 10%, var(--color-dark--2));
+  -webkit-mask: radial-gradient(farthest-side, #0000 calc(100% - 1rem), #000 0);
   animation: rotate 1.5s infinite linear;
 }
 

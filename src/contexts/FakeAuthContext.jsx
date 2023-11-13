@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from 'react';
+import { createContext, useContext, useEffect, useReducer } from 'react';
 
 const AuthContext = createContext();
 
@@ -20,10 +20,7 @@ function reducer(state, action) {
 
 const FAKE_USER = {
   name: 'John Smith',
-  address: '6/42 Crown Street',
-  suburb: 'Wollongong',
-  state: 'NSW',
-  code: '2500',
+  address: '6/42 Crown Street, Wollongong 2500, NSW',
   email: 'john@ecommerce.com',
   password: 'John1234',
   cardNum: 5217291895377726,
@@ -34,8 +31,24 @@ const FAKE_USER = {
 function AuthProvider({ children }) {
   const [{ user, isAuthenticated }, dispatch] = useReducer(
     reducer,
-    initialState
+    initialState,
+    initial => {
+      const storedUser = localStorage.getItem('user');
+      const storedIsAuthenticated = localStorage.getItem('isAuthenticated');
+
+      return {
+        user: storedUser ? JSON.parse(storedUser) : initial.user,
+        isAuthenticated: storedIsAuthenticated
+          ? JSON.parse(storedIsAuthenticated)
+          : initial.isAuthenticated,
+      };
+    }
   );
+
+  useEffect(() => {
+    localStorage.setItem('user', JSON.stringify(user));
+    localStorage.setItem('isAuthenticated', JSON.stringify(isAuthenticated));
+  }, [user, isAuthenticated]);
 
   function login(email, password) {
     if (email === FAKE_USER.email && password === FAKE_USER.password)

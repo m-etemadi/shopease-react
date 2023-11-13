@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 import { CartProvider } from './contexts/CartContext';
 import { AuthProvider } from './contexts/FakeAuthContext';
@@ -12,7 +12,6 @@ const Order = lazy(() => import('./pages/Order/Order'));
 
 import ProtectedRoute from './route/ProtectedRoute';
 import Checkout from './pages/Order/Checkout';
-import OrderSuccess from './pages/Order/OrderSuccess';
 
 import Navbar from './components/common/Navbar/Navbar';
 import SpinnerFullPage from './components/Common/SpinnerFullPage';
@@ -39,13 +38,8 @@ function App() {
                   </ProtectedRoute>
                 }
               >
-                <Route index element={<Checkout />} />
+                <Route index element={<Navigate replace to="checkout" />} />
                 <Route path="checkout" element={<Checkout />} />
-                <Route path="order-success" element={<OrderSuccess />} />
-                <Route
-                  path="order-success/:orderId"
-                  element={<OrderSuccess />}
-                />
               </Route>
             </Routes>
           </Suspense>

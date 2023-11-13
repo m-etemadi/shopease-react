@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer } from 'react';
+import { createContext, useContext, useEffect, useReducer } from 'react';
 
 const CartContext = createContext();
 
@@ -68,7 +68,20 @@ const handleItemDecrease = (state, itemId) => {
 };
 
 function CartProvider({ children }) {
-  const [{ cartItems }, dispatch] = useReducer(reducer, initialState);
+  const [{ cartItems }, dispatch] = useReducer(
+    reducer,
+    initialState,
+    initial => {
+      const storedCart = localStorage.getItem('cartItems');
+      return {
+        cartItems: storedCart ? JSON.parse(storedCart) : initial.cartItems,
+      };
+    }
+  );
+
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [cartItems]);
 
   function handleAddItem(item) {
     const existingItem = cartItems.find(cartItem => cartItem.id === item.id);
