@@ -5,7 +5,7 @@ import { CartProvider } from './contexts/CartContext';
 import { AuthProvider } from './contexts/FakeAuthContext';
 
 const Products = lazy(() => import('./pages/Products/Product'));
-const Contact = lazy(() => import('./pages/Contact/Contact'));
+const Faq = lazy(() => import('./pages/Faq/Faq'));
 const Login = lazy(() => import('./pages/Login/Login'));
 const Cart = lazy(() => import('./pages/Cart/Cart'));
 const Order = lazy(() => import('./pages/Order/Order'));
@@ -13,7 +13,7 @@ const Order = lazy(() => import('./pages/Order/Order'));
 import ProtectedRoute from './route/ProtectedRoute';
 import Checkout from './pages/Order/Checkout';
 
-import Navbar from './components/common/Navbar/Navbar';
+import Header from './components/Header/Header';
 import SpinnerFullPage from './components/Common/SpinnerFullPage';
 
 function App() {
@@ -21,12 +21,12 @@ function App() {
     <AuthProvider>
       <CartProvider>
         <BrowserRouter>
-          <Navbar />
+          <Header />
 
           <Suspense fallback={<SpinnerFullPage />}>
             <Routes>
               <Route path="/" element={<Products />} />
-              <Route path="contact" element={<Contact />} />
+              <Route path="faq" element={<Faq />} />
               <Route path="login" element={<Login />} />
               <Route path="cart" element={<Cart />} />
 

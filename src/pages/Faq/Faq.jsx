@@ -1,4 +1,4 @@
-function Contact() {
+function Faq() {
   return (
     <section className="contact p-5">
       <div className="container">
@@ -8,4 +8,4 @@ function Contact() {
   );
 }
 
-export default Contact;
+export default Faq;
