@@ -1,0 +1,16 @@
+.navbar ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 3rem;
+}
+
+.navbar a {
+  font-size: 2rem;
+  color: inherit;
+}
+
+.navbar a:global(.active) {
+  border-bottom: 2px solid var(--color-red);
+  padding-bottom: 0.5rem;
+}

@@ -1,0 +1,43 @@
+.userActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 2.5rem;
+}
+
+.userActions a {
+  color: inherit;
+}
+
+.userActions li:first-child a {
+  border: 1px solid var(--color-dark--0);
+  width: 9rem;
+  text-align: center;
+  display: inline-block;
+  padding: 0.5rem 0;
+  border-radius: 5rem;
+}
+
+.userActions li:last-child {
+  position: relative;
+}
+
+.userActions li:last-child a {
+  font-size: 2.2rem;
+}
+
+.userActions .badge {
+  font-size: 1.2rem;
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  min-width: 2.4rem;
+  min-height: 2.4rem;
+  color: var(--color-light--2);
+  background-color: var(--color-red);
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
