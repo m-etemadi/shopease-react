@@ -186,8 +186,6 @@ textarea {
 }
 
 .cart-items {
-  max-width: 60rem;
-  margin: 0 auto;
   text-align: center;
 }
 
@@ -323,4 +321,29 @@ textarea {
   to {
     transform: rotate(1turn);
   }
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.row {
+  display: flex;
+}
+
+.cell {
+  flex: 1;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  font-weight: bold;
 }

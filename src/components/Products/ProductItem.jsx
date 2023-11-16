@@ -29,15 +29,15 @@ function ProductItem({ product }) {
     <div className="product-cart">
       <img src={productImage} alt={productName} />
       <div className="product-cart__details">
-        <strong>{productName}</strong>
-        <p>{formatCurrency(price)}</p>
+        <h2>{productName}</h2>
+        <span>{formatCurrency(price)}</span>
+        <Button
+          onClick={handleAddToCart}
+          className={`btn ${isInCart ? 'added' : ''}`}
+        >
+          {isInCart ? 'Added to Cart' : 'Add to Cart'}
+        </Button>
       </div>
-      <Button
-        onClick={handleAddToCart}
-        className={`btn ${isInCart ? 'added' : ''}`}
-      >
-        {isInCart ? 'Added to Cart' : 'Add to Cart'}
-      </Button>
     </div>
   );
 }
