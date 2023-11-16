@@ -23,12 +23,18 @@ function CartTableRow({ item }) {
       <div className="cell">
         <img src={productImage} alt={productName} />
       </div>
-      <div className="cell">{productName}</div>
-      <div className="cell">{formatCurrency(price)}</div>
+      <div className="cell">
+        <strong>{productName}</strong>
+      </div>
+      <div className="cell">
+        <span>{formatCurrency(price)}</span>
+      </div>
       <div className="cell">
         <CartQuantityControl item={item} />
       </div>
-      <div className="cell">{formatCurrency(totalPrice)}</div>
+      <div className="cell">
+        <span>{formatCurrency(totalPrice)}</span>
+      </div>
       <div className="cell">
         <Button className="btn-remove" onClick={handleDelete}>
           <FontAwesomeIcon icon={faTrash} size="xl" />

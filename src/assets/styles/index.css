@@ -238,13 +238,6 @@ textarea {
   text-align: center;
 }
 
-.cart-summary {
-  margin-top: 4rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-
 .login {
   margin: 0 auto;
   width: 35rem;
@@ -327,14 +320,14 @@ textarea {
   display: flex;
   flex-direction: column;
   border: 1px solid #ccc;
-  margin-bottom: 20px;
+  margin-bottom: 8rem;
 }
 
-.row {
+.table .row {
   display: flex;
 }
 
-.cell {
+.table .cell {
   flex: 1;
   text-align: center;
   border-bottom: 1px solid #ccc;
@@ -344,6 +337,33 @@ textarea {
   align-items: center;
 }
 
-.header {
+.table .header {
   font-weight: bold;
+}
+
+.cart-summary {
+  width: 60rem;
+  margin: 0 auto;
+  margin-top: 4rem;
+}
+
+.cart-summary .row {
+  display: flex;
+}
+
+.cart-summary .cell {
+  flex: 1;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+  padding: 8px;
+}
+
+.cart-summary .cell:last-child {
+  text-align: right;
+}
+
+.summary-actions {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
 }

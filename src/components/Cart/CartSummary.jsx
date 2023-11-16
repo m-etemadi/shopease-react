@@ -21,10 +21,24 @@ function CartSummary() {
 
   return (
     <div className="cart-summary">
-      <p>
-        Subtotal: <strong className="red">{formatCurrency(subtotal)}</strong>
-      </p>
-      <div>
+      <h2 className="page-title">Cart totals</h2>
+      <div className="row">
+        <div className="cell">Subtotal</div>
+        <div className="cell">{formatCurrency(subtotal)}</div>
+      </div>
+      <div className="row">
+        <div className="cell">Shipping Fee</div>
+        <div className="cell">Free</div>
+      </div>
+      <div className="row">
+        <div className="cell">
+          <strong>Total</strong>
+        </div>
+        <div className="cell">
+          <strong>{formatCurrency(subtotal)}</strong>
+        </div>
+      </div>
+      <div className="summary-actions">
         <Button className="btn" onClick={() => navigate('/')}>
           Continue Shopping
         </Button>

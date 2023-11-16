@@ -12,7 +12,7 @@ function CartQuantityControl({ item }) {
   const isAvailable = currentQuantity < totalQuantity;
 
   return (
-    <div className="item-control">
+    <>
       <Button
         className="btn btn-quantity"
         onClick={() => decreaseItemQuantity(id, currentQuantity)}
@@ -28,7 +28,7 @@ function CartQuantityControl({ item }) {
           +
         </Button>
       )}
-    </div>
+    </>
   );
 }
 
