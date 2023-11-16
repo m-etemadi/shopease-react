@@ -3,6 +3,8 @@ import { useAuth } from '../../contexts/FakeAuthContext';
 
 import Button from '../common/Button';
 
+import styles from './LoginForm.module.css';
+
 function LoginForm() {
   const { login } = useAuth();
 
@@ -17,7 +19,7 @@ function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleLogin}>
+    <form className={styles.loginForm} onSubmit={handleLogin}>
       <div>
         <input
           type="email"
@@ -35,7 +37,7 @@ function LoginForm() {
         />
       </div>
 
-      <Button className="btn">Login</Button>
+      <Button>Continue</Button>
     </form>
   );
 }

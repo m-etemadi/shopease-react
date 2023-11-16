@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { CartProvider } from './contexts/CartContext';
 import { AuthProvider } from './contexts/FakeAuthContext';
 
-const Products = lazy(() => import('./pages/Products/Product'));
+const Products = lazy(() => import('./pages/Products/Products'));
 const Faq = lazy(() => import('./pages/Faq/Faq'));
 const Login = lazy(() => import('./pages/Login/Login'));
 const Cart = lazy(() => import('./pages/Cart/Cart'));

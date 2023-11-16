@@ -5,6 +5,8 @@ import { useAuth } from '../../contexts/FakeAuthContext';
 
 import LoginForm from '../../components/Login/LoginForm';
 
+import styles from './Login.module.css';
+
 function Login() {
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
@@ -26,8 +28,8 @@ function Login() {
   return (
     <main className="p-5">
       <div className="container">
-        <div className="login">
-          <h2 className="page-title">Login</h2>
+        <h2 className="page-title">Login</h2>
+        <div className={styles.login}>
           <LoginForm />
         </div>
       </div>

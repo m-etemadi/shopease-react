@@ -10,7 +10,7 @@ function Cart() {
   const cartLength = cartItems.length;
 
   return (
-    <main className="cart p-5">
+    <main className="p-5">
       <div className="container">
         <h2 className="page-title">Your cart items</h2>
 
