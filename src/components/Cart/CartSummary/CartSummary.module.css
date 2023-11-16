@@ -1,0 +1,26 @@
+.cartSummary {
+  width: 60rem;
+  margin: 0 auto;
+  margin-top: 4rem;
+}
+
+.cartSummary .row {
+  display: flex;
+}
+
+.cartSummary .cell {
+  flex: 1;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+  padding: 8px;
+}
+
+.cartSummary .cell:last-child {
+  text-align: right;
+}
+
+.cartSummaryActions {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+}

@@ -3,6 +3,8 @@ import { getItemPropertyById } from '../../../utils/helpers';
 
 import Button from '../../Common/Button';
 
+import styles from './CartQuantityControl.module.css';
+
 function CartQuantityControl({ item }) {
   const { id, totalQuantity } = item;
 
@@ -14,15 +16,15 @@ function CartQuantityControl({ item }) {
   return (
     <>
       <Button
-        className="btn btn-quantity"
+        className={`btn ${styles.btnQuantity}`}
         onClick={() => decreaseItemQuantity(id, currentQuantity)}
       >
         -
       </Button>
-      <span className="quantity">{currentQuantity}</span>
+      <span className={styles.quantity}>{currentQuantity}</span>
       {isAvailable && (
         <Button
-          className="btn btn-quantity"
+          className={`btn ${styles.btnQuantity}`}
           onClick={() => increaseItemQuantity(id)}
         >
           +

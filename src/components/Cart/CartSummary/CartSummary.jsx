@@ -9,6 +9,8 @@ import {
 
 import Button from '../../Common/Button';
 
+import styles from './CartSummary.module.css';
+
 function CartSummary() {
   const { cartItems, clearCart } = useCart();
   const { isAuthenticated } = useAuth();
@@ -23,25 +25,25 @@ function CartSummary() {
   }
 
   return (
-    <div className="cart-summary">
+    <div className={styles.cartSummary}>
       <h2 className="page-title">Cart totals</h2>
-      <div className="row">
-        <div className="cell">Subtotal</div>
-        <div className="cell">{formatCurrency(subtotal)}</div>
+      <div className={styles.row}>
+        <div className={styles.cell}>Subtotal</div>
+        <div className={styles.cell}>{formatCurrency(subtotal)}</div>
       </div>
-      <div className="row">
-        <div className="cell">Shipping Fee</div>
-        <div className="cell">Free</div>
+      <div className={styles.row}>
+        <div className={styles.cell}>Shipping Fee</div>
+        <div className={styles.cell}>Free</div>
       </div>
-      <div className="row">
-        <div className="cell">
+      <div className={styles.row}>
+        <div className={styles.cell}>
           <strong>Total</strong>
         </div>
-        <div className="cell">
+        <div className={styles.cell}>
           <strong>{formatCurrency(subtotal)}</strong>
         </div>
       </div>
-      <div className="summary-actions">
+      <div className={styles.cartSummaryActions}>
         <Button className="btn" onClick={() => navigate('/')}>
           Continue Shopping
         </Button>
