@@ -1,8 +1,8 @@
 import { useCart } from '../../contexts/CartContext';
 
-import CartSummary from '../../components/Cart/CartSummary';
-import Message from '../../components/Common/Message';
 import CartTable from '../../components/Cart/CartTable/CartTable';
+import CartSummary from '../../components/Cart/CartSummary/CartSummary';
+import Message from '../../components/Common/Message';
 
 function Cart() {
   const { cartItems } = useCart();

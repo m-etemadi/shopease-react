@@ -1,12 +1,14 @@
+import styles from './CartTable.module.css';
+
 function CartTableHeader() {
   return (
-    <div className="row header">
-      <div className="cell">Products</div>
-      <div className="cell">Title</div>
-      <div className="cell">Price</div>
-      <div className="cell">Quantity</div>
-      <div className="cell">Total</div>
-      <div className="cell">Remove</div>
+    <div className={`${styles.row} ${styles.header}`}>
+      <div className={styles.cell}>Products</div>
+      <div className={styles.cell}>Title</div>
+      <div className={styles.cell}>Price</div>
+      <div className={styles.cell}>Quantity</div>
+      <div className={styles.cell}>Total</div>
+      <div className={styles.cell}>Remove</div>
     </div>
   );
 }

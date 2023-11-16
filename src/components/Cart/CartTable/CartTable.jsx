@@ -3,11 +3,13 @@ import { useCart } from '../../../contexts/CartContext';
 import CartTableHeader from './CartTableHeader';
 import CartTableRow from './CartTableRow';
 
+import styles from './CartTable.module.css';
+
 function CartTable() {
   const { cartItems } = useCart();
 
   return (
-    <div className="table">
+    <div className={styles.cartTable}>
       <CartTableHeader />
 
       {cartItems.map(item => (

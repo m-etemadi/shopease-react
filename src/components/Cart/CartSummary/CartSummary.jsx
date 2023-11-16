@@ -1,10 +1,13 @@
 import { useNavigate } from 'react-router';
 
-import { useCart } from '../../contexts/CartContext';
-import { useAuth } from '../../contexts/FakeAuthContext';
-import { calculateTotalByProperty, formatCurrency } from '../../utils/helpers';
+import { useCart } from '../../../contexts/CartContext';
+import { useAuth } from '../../../contexts/FakeAuthContext';
+import {
+  calculateTotalByProperty,
+  formatCurrency,
+} from '../../../utils/helpers';
 
-import Button from '../Common/Button';
+import Button from '../../Common/Button';
 
 function CartSummary() {
   const { cartItems, clearCart } = useCart();

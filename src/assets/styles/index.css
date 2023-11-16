@@ -242,31 +242,6 @@ textarea {
   }
 }
 
-.table {
-  display: flex;
-  flex-direction: column;
-  border: 1px solid #ccc;
-  margin-bottom: 8rem;
-}
-
-.table .row {
-  display: flex;
-}
-
-.table .cell {
-  flex: 1;
-  text-align: center;
-  border-bottom: 1px solid #ccc;
-  padding: 8px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.table .header {
-  font-weight: bold;
-}
-
 .cart-summary {
   width: 60rem;
   margin: 0 auto;

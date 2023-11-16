@@ -3,7 +3,9 @@
 }
 
 .container {
-  margin: 0 1.5rem;
+  padding: 0 1.5rem;
+  max-width: 120rem;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;

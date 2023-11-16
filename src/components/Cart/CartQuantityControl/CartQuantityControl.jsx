@@ -1,7 +1,7 @@
-import { useCart } from '../../contexts/CartContext';
-import { getItemPropertyById } from '../../utils/helpers';
+import { useCart } from '../../../contexts/CartContext';
+import { getItemPropertyById } from '../../../utils/helpers';
 
-import Button from '../Common/Button';
+import Button from '../../Common/Button';
 
 function CartQuantityControl({ item }) {
   const { id, totalQuantity } = item;
