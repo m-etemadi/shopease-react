@@ -26,16 +26,20 @@ function UserActions() {
       <ul>
         {!isAuthenticated ? (
           <li>
-            <Link to="login">Login</Link>
+            <Link title="Login" to="login">
+              Login
+            </Link>
           </li>
         ) : (
           <li>
-            <Link onClick={handleLogout}>Logout</Link>
+            <Link title="Logout" onClick={handleLogout}>
+              Logout
+            </Link>
           </li>
         )}
 
         <li>
-          <Link to="cart">
+          <Link title="Cart" to="cart">
             {cartLength > 0 && (
               <span className="cart-badge">
                 {totalQuantity > 9 ? '+10' : totalQuantity}

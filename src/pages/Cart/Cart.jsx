@@ -10,7 +10,7 @@ function Cart() {
   const cartLength = cartItems.length;
 
   return (
-    <section className="cart p-5">
+    <main className="cart p-5">
       <div className="container">
         <h2 className="page-title">Your cart items</h2>
 
@@ -23,7 +23,7 @@ function Cart() {
           {cartLength > 0 && <CartSummary />}
         </div>
       </div>
-    </section>
+    </main>
   );
 }
 

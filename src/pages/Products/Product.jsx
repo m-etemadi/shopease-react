@@ -4,13 +4,13 @@ import ProductItem from '../../components/Products/ProductItem';
 
 function Products() {
   return (
-    <section className="products p-5">
+    <main className="products p-5">
       <div className="container">
         {allProducts.map(product => (
           <ProductItem key={product.id} product={product} />
         ))}
       </div>
-    </section>
+    </main>
   );
 }
 

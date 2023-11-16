@@ -24,14 +24,14 @@ function Login() {
   );
 
   return (
-    <section className="p-5">
+    <main className="p-5">
       <div className="container">
         <h2 className="page-title">Login</h2>
         <div className="login">
           <LoginForm />
         </div>
       </div>
-    </section>
+    </main>
   );
 }
 

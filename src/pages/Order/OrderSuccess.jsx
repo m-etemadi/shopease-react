@@ -9,13 +9,13 @@ function OrderSuccess() {
   const id = searchParams.get('orderId');
 
   return (
-    <div className="completed p-5">
+    <main className="completed p-5">
       <p>Order Placed Successfully</p>
       <p>Order ID: #{id}</p>
       <Button className="btn" onClick={() => navigate('/')}>
         Back to product page
       </Button>
-    </div>
+    </main>
   );
 }
 

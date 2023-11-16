@@ -1,5 +1,9 @@
 function Message({ message }) {
-  return <p>{message}</p>;
+  return (
+    <div>
+      <p>{message}</p>
+    </div>
+  );
 }
 
 export default Message;
