@@ -11,6 +11,8 @@ import {
 
 import Button from '../../components/common/Button';
 
+import styles from './Order.module.css';
+
 function Checkout() {
   const { cartItems, clearCart } = useCart();
   const { user } = useAuth();
@@ -71,58 +73,55 @@ function Checkout() {
         <h2 className="page-title">
           Checkout ({totalQuantity} {totalQuantity > 1 ? 'items' : 'item'})
         </h2>
-        <div className="checkout">
-          <form onSubmit={handleCheckout}>
-            <div className="checkout-section">
-              <h3>Full Name</h3>
-              <div className="single-input">
-                <input
-                  type="text"
-                  value={fullName}
-                  onChange={e => setFullName(e.target.value)}
-                />
-              </div>
+
+        <form className={styles.checkout} onSubmit={handleCheckout}>
+          <div className={styles.checkoutSection}>
+            <h3>Full Name</h3>
+            <input
+              className={styles.singleInput}
+              type="text"
+              value={fullName}
+              onChange={e => setFullName(e.target.value)}
+            />
+          </div>
+          <div className={styles.checkoutSection}>
+            <h3>Delivery Address</h3>
+            <input
+              className={styles.singleInput}
+              type="text"
+              value={mainAddress}
+              onChange={e => setMainAddress(e.target.value)}
+            />
+          </div>
+          <div className={styles.checkoutSection}>
+            <h3>Cart Details</h3>
+            <input
+              className={styles.singleInput}
+              type="text"
+              value={mainCard}
+              onChange={e => setMainCard(+e.target.value)}
+            />
+            <div className={styles.doubleInput}>
+              <input
+                type="text"
+                value={mainCvv}
+                onChange={e => setMainCvv(+e.target.value)}
+              />
+              <input
+                type="text"
+                value={mainExpDate}
+                onChange={e => setMainExpDate(e.target.value)}
+              />
             </div>
-            <div className="checkout-section">
-              <h3>Delivery Address</h3>
-              <div className="single-input">
-                <input
-                  type="text"
-                  value={mainAddress}
-                  onChange={e => setMainAddress(e.target.value)}
-                />
-              </div>
-            </div>
-            <div className="checkout-section">
-              <h3>Cart Details</h3>
-              <div className="single-input">
-                <input
-                  type="text"
-                  value={mainCard}
-                  onChange={e => setMainCard(+e.target.value)}
-                />
-              </div>
-              <div className="double-input">
-                <input
-                  type="text"
-                  value={mainCvv}
-                  onChange={e => setMainCvv(+e.target.value)}
-                />
-                <input
-                  type="text"
-                  value={mainExpDate}
-                  onChange={e => setMainExpDate(e.target.value)}
-                />
-              </div>
-            </div>
-            <div>
-              <Button className="btn" onClick={() => navigate('/cart')}>
-                Go back
-              </Button>
-              <Button className="btn">Place order</Button>
-            </div>
-          </form>
-        </div>
+          </div>
+
+          <div className={styles.checkoutActions}>
+            <Button className="btn" onClick={() => navigate('/cart')}>
+              Go back
+            </Button>
+            <Button className="btn">Place order</Button>
+          </div>
+        </form>
       </div>
     </main>
   );

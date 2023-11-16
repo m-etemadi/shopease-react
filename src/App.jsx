@@ -14,7 +14,7 @@ import ProtectedRoute from './route/ProtectedRoute';
 import Checkout from './pages/Order/Checkout';
 
 import Header from './components/Header/Header';
-import SpinnerFullPage from './components/Common/SpinnerFullPage';
+import SpinnerFullPage from './components/Common/SpinnerFullPage/SpinnerFullPage';
 
 function App() {
   return (
