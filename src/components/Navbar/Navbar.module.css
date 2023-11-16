@@ -11,6 +11,6 @@
 }
 
 .navbar a:global(.active) {
-  border-bottom: 2px solid var(--color-red);
+  border-bottom: 2px solid var(--color-red--1);
   padding-bottom: 0.5rem;
 }

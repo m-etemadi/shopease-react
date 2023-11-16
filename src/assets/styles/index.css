@@ -7,8 +7,10 @@
 
   --color-light--1: #aaa;
   --color-light--2: #ececec;
+  --color-light--3: #fff;
 
-  --color-red: #db3e3e;
+  --color-red--1: #db3e3e;
+  --color-red--2: #fa6e6e;
 
   --color-green: #23a723;
 }
@@ -71,44 +73,6 @@ textarea {
 .p-5 {
   padding-top: 5rem;
   padding-bottom: 5rem;
-}
-
-.btn {
-  background-color: transparent;
-  border: 1px solid var(--color-dark--0);
-  padding: 0.7rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-}
-
-.btn:not(:last-child) {
-  margin-right: 1rem;
-}
-
-.btn:hover {
-  background-color: var(--color-dark--0);
-  color: var(--color-light--2);
-}
-
-.btn-remove {
-  color: var(--color-red);
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-}
-
-.btn-logout {
-  cursor: pointer;
-}
-
-.red {
-  color: var(--color-red);
-}
-
-.added {
-  cursor: not-allowed;
-  background-color: var(--color-dark--0);
-  color: var(--color-light--2);
 }
 
 .item-title {

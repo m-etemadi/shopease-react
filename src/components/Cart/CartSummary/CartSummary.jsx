@@ -7,7 +7,7 @@ import {
   formatCurrency,
 } from '../../../utils/helpers';
 
-import Button from '../../Common/Button';
+import Button from '../../Common/Button/Button';
 
 import styles from './CartSummary.module.css';
 

@@ -1,7 +1,7 @@
 import { useCart } from '../../../contexts/CartContext';
 import { formatCurrency, getItemPropertyById } from '../../../utils/helpers';
 
-import Button from '../../Common/Button';
+import Button from '../../Common/Button/Button';
 import CartQuantityControl from '../CartQuantityControl/CartQuantityControl';
 
 import { faTrash } from '@fortawesome/free-solid-svg-icons';

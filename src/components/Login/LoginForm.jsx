@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useAuth } from '../../contexts/FakeAuthContext';
 
-import Button from '../common/Button';
+import Button from '../Common/Button/Button';
 
 import styles from './LoginForm.module.css';
 

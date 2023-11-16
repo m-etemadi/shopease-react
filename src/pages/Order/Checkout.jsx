@@ -9,7 +9,7 @@ import {
   generateRandomID,
 } from '../../utils/helpers';
 
-import Button from '../../components/common/Button';
+import Button from '../../components/common/Button/Button';
 
 import styles from './Order.module.css';
 

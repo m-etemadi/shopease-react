@@ -1,7 +1,7 @@
 import { useCart } from '../../contexts/CartContext';
 import { getItemPropertyById, formatCurrency } from '../../utils/helpers';
 
-import Button from '../common/Button';
+import Button from '../common/Button/Button';
 
 import styles from './ProductItem.module.css';
 

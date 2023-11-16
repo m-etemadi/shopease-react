@@ -1,7 +1,7 @@
 import { useCart } from '../../../contexts/CartContext';
 import { getItemPropertyById } from '../../../utils/helpers';
 
-import Button from '../../Common/Button';
+import Button from '../../Common/Button/Button';
 
 import styles from './CartQuantityControl.module.css';
 

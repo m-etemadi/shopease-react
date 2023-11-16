@@ -1,0 +1,32 @@
+.btn {
+  font-family: inherit;
+  border: none;
+  cursor: pointer;
+}
+
+.primary {
+  background-color: var(--color-red--1);
+  color: var(--color-light--3);
+  padding: 1.2rem;
+  transition: all 0.3s;
+}
+
+.primary :hover {
+  background-color: var(--color-red--2);
+}
+
+.primary:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.remove {
+  color: var(--color-red--1);
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.added {
+  cursor: not-allowed;
+  background-color: var(--color-red--2);
+}
