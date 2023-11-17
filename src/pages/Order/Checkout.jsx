@@ -70,7 +70,7 @@ function Checkout() {
   return (
     <main className="p-5">
       <div className="container">
-        <h2 className="page-title">
+        <h2 className="heading-primary">
           Checkout ({totalQuantity} {totalQuantity > 1 ? 'items' : 'item'})
         </h2>
 
@@ -116,10 +116,10 @@ function Checkout() {
           </div>
 
           <div className={styles.checkoutActions}>
-            <Button className="btn" onClick={() => navigate('/cart')}>
+            <Button type="primary" onClick={() => navigate('/cart')}>
               Go back
             </Button>
-            <Button className="btn">Place order</Button>
+            <Button type="primary">Place order</Button>
           </div>
         </form>
       </div>

@@ -60,9 +60,11 @@ textarea {
   padding: 0 1.5rem;
 }
 
-.page-title {
-  margin-bottom: 5rem;
+.heading-primary {
+  font-size: 3rem;
+  font-weight: 400;
   text-align: center;
+  margin-bottom: 5rem;
 }
 
 .p-2 {

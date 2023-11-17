@@ -6,7 +6,7 @@ function Logo() {
   return (
     <h1 className={styles.logo}>
       <Link title="ShopEase" to="/">
-        ShopEase
+        Shop<span>Ease</span>
       </Link>
     </h1>
   );

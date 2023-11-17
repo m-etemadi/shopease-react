@@ -1,8 +1,8 @@
 function Faq() {
   return (
-    <main className="faq p-5">
+    <main className="p-5">
       <div className="container">
-        <h2 className="page-title">FAQ</h2>
+        <h2 className="heading-primary">FAQ</h2>
       </div>
     </main>
   );

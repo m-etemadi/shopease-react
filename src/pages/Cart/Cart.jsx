@@ -2,7 +2,7 @@ import { useCart } from '../../contexts/CartContext';
 
 import CartTable from '../../components/Cart/CartTable/CartTable';
 import CartSummary from '../../components/Cart/CartSummary/CartSummary';
-import Message from '../../components/Common/Message';
+import Message from '../../components/Common/Message/Message';
 
 function Cart() {
   const { cartItems } = useCart();
@@ -12,7 +12,7 @@ function Cart() {
   return (
     <main className="p-5">
       <div className="container">
-        <h2 className="page-title">Your cart items</h2>
+        <h2 className="heading-primary">Your cart items</h2>
 
         {cartLength > 0 ? (
           <CartTable />

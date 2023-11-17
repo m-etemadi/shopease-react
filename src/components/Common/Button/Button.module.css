@@ -9,7 +9,7 @@
 .primary {
   background-color: var(--color-red--1);
   color: var(--color-light--3);
-  padding: 1rem;
+  padding: 1.2rem;
 }
 
 .primary:hover {
@@ -24,7 +24,7 @@
   cursor: not-allowed;
   background-color: var(--color-red--2);
   color: var(--color-light--3);
-  padding: 1rem;
+  padding: 1.2rem;
 }
 
 .quantity {

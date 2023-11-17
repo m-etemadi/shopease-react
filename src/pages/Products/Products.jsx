@@ -7,7 +7,7 @@ import styles from './Products.module.css';
 function Products() {
   return (
     <main className="p-5">
-      <div className={styles.container}>
+      <div className={`container ${styles.container}`}>
         {allProducts.map(product => (
           <ProductItem key={product.id} product={product} />
         ))}

@@ -7,7 +7,7 @@ import styles from './Header.module.css';
 function Header() {
   return (
     <header className={`${styles.header} p-2`}>
-      <div className={styles.container}>
+      <div className={`container ${styles.container}`}>
         <Logo />
         <Navbar />
         <UserActions />

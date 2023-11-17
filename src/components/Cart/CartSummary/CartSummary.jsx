@@ -26,7 +26,7 @@ function CartSummary() {
 
   return (
     <div className={styles.cartSummary}>
-      <h2 className="page-title">Cart totals</h2>
+      <h2 className="heading-primary">Cart totals</h2>
       <div className={styles.row}>
         <div className={styles.cell}>Subtotal</div>
         <div className={styles.cell}>{formatCurrency(subtotal)}</div>

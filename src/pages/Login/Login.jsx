@@ -28,7 +28,7 @@ function Login() {
   return (
     <main className="p-5">
       <div className="container">
-        <h2 className="page-title">Login</h2>
+        <h2 className="heading-primary">Login</h2>
         <div className={styles.login}>
           <LoginForm />
         </div>
