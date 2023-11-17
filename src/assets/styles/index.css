@@ -15,10 +15,19 @@
   --color-green: #23a723;
 }
 
-* {
-  margin: 0;
+*,
+*::before,
+*::after {
   padding: 0;
-  box-sizing: inherit;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+textarea,
+input,
+button,
+a {
+  outline: none;
 }
 
 ul {
@@ -29,9 +38,17 @@ a {
   text-decoration: none;
 }
 
-img {
+img,
+picture,
+svg {
   max-width: 100%;
   object-fit: cover;
+}
+
+html,
+body {
+  height: 100%;
+  min-height: 100%;
 }
 
 html {
