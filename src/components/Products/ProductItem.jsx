@@ -34,10 +34,7 @@ function ProductItem({ product }) {
         <h2>{productName}</h2>
         <span>{formatCurrency(price)}</span>
       </div>
-      <Button
-        onClick={handleAddToCart}
-        className={`btn ${isInCart ? 'added' : ''}`}
-      >
+      <Button onClick={handleAddToCart} type={isInCart ? 'added' : 'primary'}>
         {isInCart ? 'Added to Cart' : 'Add to Cart'}
       </Button>
     </div>

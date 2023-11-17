@@ -2,31 +2,40 @@
   font-family: inherit;
   border: none;
   cursor: pointer;
+  background-color: transparent;
+  transition: all 0.25s;
 }
 
 .primary {
   background-color: var(--color-red--1);
   color: var(--color-light--3);
-  padding: 1.2rem;
-  transition: all 0.3s;
+  padding: 1rem;
 }
 
-.primary :hover {
+.primary:hover {
   background-color: var(--color-red--2);
-}
-
-.primary:not(:last-child) {
-  margin-right: 1rem;
 }
 
 .remove {
   color: var(--color-red--1);
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
 }
 
 .added {
   cursor: not-allowed;
   background-color: var(--color-red--2);
+  color: var(--color-light--3);
+  padding: 1rem;
+}
+
+.quantity {
+  border: 1px solid var(--color-dark--0);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.quantity:hover {
+  border: 1px solid var(--color-red--1);
+  background-color: var(--color-red--1);
+  color: var(--color-light--3);
 }

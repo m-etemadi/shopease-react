@@ -38,7 +38,7 @@ function CartTableRow({ item }) {
         <span>{formatCurrency(totalPrice)}</span>
       </div>
       <div className={styles.cell}>
-        <Button className="btn-remove" onClick={handleDelete}>
+        <Button type="remove" onClick={handleDelete}>
           <FontAwesomeIcon icon={faTrash} size="xl" />
         </Button>
       </div>

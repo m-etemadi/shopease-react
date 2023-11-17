@@ -44,13 +44,13 @@ function CartSummary() {
         </div>
       </div>
       <div className={styles.cartSummaryActions}>
-        <Button className="btn" onClick={() => navigate('/')}>
+        <Button type="primary" onClick={() => navigate('/')}>
           Continue Shopping
         </Button>
-        <Button className="btn" onClick={handleCheckout}>
+        <Button type="primary" onClick={handleCheckout}>
           Checkout
         </Button>
-        <Button className="btn" onClick={clearCart}>
+        <Button type="primary" onClick={clearCart}>
           Clear Cart
         </Button>
       </div>

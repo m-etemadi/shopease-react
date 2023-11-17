@@ -16,17 +16,16 @@ function CartQuantityControl({ item }) {
   return (
     <>
       <Button
-        className={`btn ${styles.btnQuantity}`}
+        type="quantity"
         onClick={() => decreaseItemQuantity(id, currentQuantity)}
       >
         -
       </Button>
+
       <span className={styles.quantity}>{currentQuantity}</span>
+
       {isAvailable && (
-        <Button
-          className={`btn ${styles.btnQuantity}`}
-          onClick={() => increaseItemQuantity(id)}
-        >
+        <Button type="quantity" onClick={() => increaseItemQuantity(id)}>
           +
         </Button>
       )}

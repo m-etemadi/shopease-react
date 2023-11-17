@@ -74,17 +74,3 @@ textarea {
   padding-top: 5rem;
   padding-bottom: 5rem;
 }
-
-.item-title {
-  font-size: 2.2rem;
-}
-
-.completed {
-  text-align: center;
-}
-
-.completed p {
-  color: var(--color-green);
-  font-size: 2.6rem;
-  margin-bottom: 3rem;
-}

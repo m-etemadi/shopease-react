@@ -37,7 +37,7 @@ function LoginForm() {
         />
       </div>
 
-      <Button>Continue</Button>
+      <Button type="primary">Continue</Button>
     </form>
   );
 }
