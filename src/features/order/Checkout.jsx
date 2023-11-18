@@ -20,7 +20,7 @@ function Checkout() {
   const cartLength = cartItems.length;
 
   const totalQuantity = useSelector(calculateTotalByProperty('quantity'));
-  const subtotal = calculateTotalByProperty('totalPrice');
+  const subtotal = useSelector(calculateTotalByProperty('totalPrice'));
 
   const [fullName, setFullName] = useState(user?.name);
   const [mainAddress, setMainAddress] = useState(user?.address);
@@ -52,7 +52,7 @@ function Checkout() {
     const item = {
       id: generateRandomID(),
       subtotal,
-      // orderedItems: [...cartItems],
+      orderedItems: [...cartItems],
       customerDetails,
     };
 

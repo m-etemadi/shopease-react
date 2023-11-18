@@ -1,8 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  addItem,
-  getCurrentQuantityById,
-} from '../../../features/cart/cartSlice';
+import { addItem, getCurrentQuantityById } from '../../cart/cartSlice';
+
 import { formatCurrency } from '../../../utils/helpers';
 
 import Button from '../../../ui/Common/Button/Button';
@@ -12,8 +10,9 @@ import styles from './ProductItem.module.css';
 function ProductItem({ product }) {
   const { id, productName, price, productImage, totalQuantity } = product;
 
-  const currentQuantity = useSelector(getCurrentQuantityById(id));
   const dispatch = useDispatch();
+
+  const currentQuantity = useSelector(getCurrentQuantityById(id));
 
   const isInCart = currentQuantity > 0;
 

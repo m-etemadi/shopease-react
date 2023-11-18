@@ -4,25 +4,27 @@ import {
   clearCart,
   calculateTotalByProperty,
 } from '../../features/cart/cartSlice';
+import { logout } from '../../features/login/authenticationSlice';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './userActions.module.css';
-import { logout } from '../../features/login/authenticationSlice';
 
 function UserActions() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const cartLength = useSelector(state => state.cart.cartItems).length;
   const isAuthenticated = useSelector(
     state => state.authentication.isAuthenticated
   );
   const totalQuantity = useSelector(calculateTotalByProperty('quantity'));
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   function handleLogout() {
     dispatch(clearCart());
     dispatch(logout());
+
     navigate('/');
   }
 

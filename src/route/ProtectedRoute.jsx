@@ -3,11 +3,11 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function ProtectedRoute({ children }) {
+  const navigate = useNavigate();
+
   const isAuthenticated = useSelector(
     state => state.authentication.isAuthenticated
   );
-
-  const navigate = useNavigate();
 
   useEffect(
     function () {
