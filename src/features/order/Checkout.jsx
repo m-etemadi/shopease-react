@@ -1,28 +1,26 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { placeOrder } from '../../features/order/orderSlice';
-import { clearCart } from '../../features/cart/cartSlice';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  calculateTotalByProperty,
-  generateRandomID,
-} from '../../utils/helpers';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearCart, calculateTotalByProperty } from '../cart/cartSlice';
+import { placeOrder } from '../order/orderSlice';
+
+import { generateRandomID } from '../../utils/helpers';
 
 import Button from '../../ui/Common/Button/Button';
 
 import styles from './Order.module.css';
 
 function Checkout() {
-  const user = useSelector(state => state.authentication.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const user = useSelector(state => state.authentication.user);
   const cartItems = useSelector(state => state.cart.cartItems);
 
   const cartLength = cartItems.length;
 
-  const totalQuantity = calculateTotalByProperty(cartItems, 'quantity');
-  const subtotal = calculateTotalByProperty(cartItems, 'totalPrice');
+  const totalQuantity = useSelector(calculateTotalByProperty('quantity'));
+  const subtotal = calculateTotalByProperty('totalPrice');
 
   const [fullName, setFullName] = useState(user?.name);
   const [mainAddress, setMainAddress] = useState(user?.address);
@@ -34,7 +32,7 @@ function Checkout() {
     if (cartLength < 1) navigate(-1);
   }, [cartLength, navigate]);
 
-  if (cartItems.length < 1) return;
+  if (cartLength < 1) return;
 
   function handleCheckout(e) {
     e.preventDefault();
@@ -54,7 +52,7 @@ function Checkout() {
     const item = {
       id: generateRandomID(),
       subtotal,
-      orderedItems: [...cartItems],
+      // orderedItems: [...cartItems],
       customerDetails,
     };
 

@@ -1,22 +1,17 @@
-import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { login } from '../login/authenticationSlice';
+
+import Button from '../../ui/Common/Button/Button';
 
 import styles from './Login.module.css';
-import { login } from '../../features/login/authenticationSlice';
-import Button from '../../ui/Common/Button/Button';
 
 function Login() {
   const [email, setEmail] = useState('john@ecommerce.com');
   const [password, setPassword] = useState('John1234');
 
   const dispatch = useDispatch();
-
-  function handleLogin(e) {
-    e.preventDefault();
-
-    if (email && password) dispatch(login(email, password));
-  }
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
@@ -25,6 +20,12 @@ function Login() {
   );
 
   const destination = searchParams.get('destination');
+
+  function handleLogin(e) {
+    e.preventDefault();
+
+    if (email && password) dispatch(login(email, password));
+  }
 
   useEffect(
     function () {

@@ -44,8 +44,11 @@ export const {
 
 export default cartSlice.reducer;
 
-export const calculateTotalQuantity = state =>
-  state.cart.cartItems.reduce((sum, item) => sum + item.quantity, 0);
-
 export const getCurrentQuantityById = id => state =>
   state.cart.cartItems.find(item => item.id === id)?.quantity ?? 0;
+
+// export const getItemPropertyById = (id, property) => state =>
+//   state.cart.cartItems.find(item => item.id === id);
+
+export const calculateTotalByProperty = property => state =>
+  state.cart.cartItems.reduce((sum, item) => sum + item[property], 0);

@@ -1,26 +1,21 @@
 import { useNavigate } from 'react-router';
-
 import { useSelector, useDispatch } from 'react-redux';
-import { clearCart } from '../../../features/cart/cartSlice';
-import {
-  calculateTotalByProperty,
-  formatCurrency,
-} from '../../../utils/helpers';
+import { clearCart, calculateTotalByProperty } from '../cartSlice';
+
+import { formatCurrency } from '../../../utils/helpers';
 
 import Button from '../../../ui/Common/Button/Button';
 
 import styles from './CartSummary.module.css';
 
 function CartSummary() {
-  const cartItems = useSelector(state => state.cart.cartItems);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const isAuthenticated = useSelector(
     state => state.authentication.isAuthenticated
   );
-  const navigate = useNavigate();
-
-  const dispatch = useDispatch();
-
-  const subtotal = calculateTotalByProperty(cartItems, 'totalPrice');
+  const subtotal = useSelector(calculateTotalByProperty('totalPrice'));
 
   function handleCheckout() {
     isAuthenticated

@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { removeItem } from '../../../features/cart/cartSlice';
+
 import { formatCurrency, getItemPropertyById } from '../../../utils/helpers';
 
 import Button from '../../../ui/Common/Button/Button';
@@ -13,8 +14,10 @@ import styles from './CartTable.module.css';
 function CartTableRow({ item }) {
   const { id, productName, productImage, price } = item;
 
-  const cartItems = useSelector(state => state.cart.cartItems);
   const dispatch = useDispatch();
+
+  const cartItems = useSelector(state => state.cart.cartItems);
+
   const totalPrice = getItemPropertyById(id, 'totalPrice', cartItems);
 
   return (

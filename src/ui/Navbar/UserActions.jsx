@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   clearCart,
-  calculateTotalQuantity,
+  calculateTotalByProperty,
 } from '../../features/cart/cartSlice';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -16,7 +16,7 @@ function UserActions() {
   const isAuthenticated = useSelector(
     state => state.authentication.isAuthenticated
   );
-  const totalQuantity = useSelector(calculateTotalQuantity);
+  const totalQuantity = useSelector(calculateTotalByProperty('quantity'));
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
