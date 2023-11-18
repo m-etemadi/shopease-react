@@ -1,20 +1,24 @@
 import { useNavigate } from 'react-router';
 
-import { useCart } from '../../../contexts/CartContext';
-import { useAuth } from '../../../contexts/FakeAuthContext';
+import { useSelector, useDispatch } from 'react-redux';
+import { clearCart } from '../../../features/cart/cartSlice';
 import {
   calculateTotalByProperty,
   formatCurrency,
 } from '../../../utils/helpers';
 
-import Button from '../../Common/Button/Button';
+import Button from '../../../ui/Common/Button/Button';
 
 import styles from './CartSummary.module.css';
 
 function CartSummary() {
-  const { cartItems, clearCart } = useCart();
-  const { isAuthenticated } = useAuth();
+  const cartItems = useSelector(state => state.cart.cartItems);
+  const isAuthenticated = useSelector(
+    state => state.authentication.isAuthenticated
+  );
   const navigate = useNavigate();
+
+  const dispatch = useDispatch();
 
   const subtotal = calculateTotalByProperty(cartItems, 'totalPrice');
 
@@ -50,7 +54,7 @@ function CartSummary() {
         <Button type="primary" onClick={handleCheckout}>
           Checkout
         </Button>
-        <Button type="primary" onClick={clearCart}>
+        <Button type="primary" onClick={() => dispatch(clearCart())}>
           Clear Cart
         </Button>
       </div>

@@ -11,11 +11,6 @@ function Navbar() {
             Shop
           </NavLink>
         </li>
-        <li>
-          <NavLink title="FAQ" to="FAQ">
-            FAQ
-          </NavLink>
-        </li>
       </ul>
     </nav>
   );

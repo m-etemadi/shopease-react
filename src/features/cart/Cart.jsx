@@ -1,13 +1,11 @@
-import { useCart } from '../../contexts/CartContext';
+import { useSelector } from 'react-redux';
 
-import CartTable from '../../components/Cart/CartTable/CartTable';
-import CartSummary from '../../components/Cart/CartSummary/CartSummary';
-import Message from '../../components/Common/Message/Message';
+import CartTable from '../cart/CartTable/CartTable';
+import CartSummary from '../cart/CartSummary/CartSummary';
+import Message from '../../ui/Common/Message/Message';
 
 function Cart() {
-  const { cartItems } = useCart();
-
-  const cartLength = cartItems.length;
+  const cartLength = useSelector(state => state.cart.cartItems).length;
 
   return (
     <main className="p-5">

@@ -1,7 +1,8 @@
-import { useCart } from '../../../contexts/CartContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeItem } from '../../../features/cart/cartSlice';
 import { formatCurrency, getItemPropertyById } from '../../../utils/helpers';
 
-import Button from '../../Common/Button/Button';
+import Button from '../../../ui/Common/Button/Button';
 import CartQuantityControl from '../CartQuantityControl/CartQuantityControl';
 
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
@@ -10,15 +11,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './CartTable.module.css';
 
 function CartTableRow({ item }) {
-  const { cartItems, removeFromCart } = useCart();
-
   const { id, productName, productImage, price } = item;
 
+  const cartItems = useSelector(state => state.cart.cartItems);
+  const dispatch = useDispatch();
   const totalPrice = getItemPropertyById(id, 'totalPrice', cartItems);
-
-  function handleDelete() {
-    removeFromCart(id);
-  }
 
   return (
     <div className={styles.row}>
@@ -38,7 +35,7 @@ function CartTableRow({ item }) {
         <span>{formatCurrency(totalPrice)}</span>
       </div>
       <div className={styles.cell}>
-        <Button type="remove" onClick={handleDelete}>
+        <Button type="remove" onClick={() => dispatch(removeItem(id))}>
           <FontAwesomeIcon icon={faTrash} size="xl" />
         </Button>
       </div>

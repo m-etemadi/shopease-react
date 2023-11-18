@@ -1,25 +1,28 @@
 import { Link, useNavigate } from 'react-router-dom';
-
-import { useCart } from '../../contexts/CartContext';
-import { useAuth } from '../../contexts/FakeAuthContext';
-import { calculateTotalByProperty } from '../../utils/helpers';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  clearCart,
+  calculateTotalQuantity,
+} from '../../features/cart/cartSlice';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 import styles from './userActions.module.css';
+import { logout } from '../../features/login/authenticationSlice';
 
 function UserActions() {
-  const { cartItems, clearCart } = useCart();
-  const { isAuthenticated, logout } = useAuth();
+  const cartLength = useSelector(state => state.cart.cartItems).length;
+  const isAuthenticated = useSelector(
+    state => state.authentication.isAuthenticated
+  );
+  const totalQuantity = useSelector(calculateTotalQuantity);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const cartLength = cartItems.length;
-  const totalQuantity = calculateTotalByProperty(cartItems, 'quantity');
-
   function handleLogout() {
-    clearCart();
-    logout();
+    dispatch(clearCart());
+    dispatch(logout());
     navigate('/');
   }
 

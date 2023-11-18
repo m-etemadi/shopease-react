@@ -1,6 +1,6 @@
 import allProducts from '../../../data/allProducts';
 
-import ProductItem from '../../components/Products/ProductItem';
+import ProductItem from './ProductItem/ProductItem';
 
 import styles from './Products.module.css';
 

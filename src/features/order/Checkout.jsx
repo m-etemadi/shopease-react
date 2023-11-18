@@ -1,36 +1,34 @@
+import { useDispatch, useSelector } from 'react-redux';
+import { placeOrder } from '../../features/order/orderSlice';
+import { clearCart } from '../../features/cart/cartSlice';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-import { useCart } from '../../contexts/CartContext';
-import { useOrder } from '../../contexts/OrderContext';
-import { useAuth } from '../../contexts/FakeAuthContext';
 import {
   calculateTotalByProperty,
   generateRandomID,
 } from '../../utils/helpers';
 
-import Button from '../../components/common/Button/Button';
+import Button from '../../ui/Common/Button/Button';
 
 import styles from './Order.module.css';
 
 function Checkout() {
-  const { cartItems, clearCart } = useCart();
-  const { user } = useAuth();
-  const { placeOrder } = useOrder();
+  const user = useSelector(state => state.authentication.user);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const cartItems = useSelector(state => state.cart.cartItems);
 
   const cartLength = cartItems.length;
-
-  const { name, address, cardNum, cvv, expDate } = user;
 
   const totalQuantity = calculateTotalByProperty(cartItems, 'quantity');
   const subtotal = calculateTotalByProperty(cartItems, 'totalPrice');
 
-  const [fullName, setFullName] = useState(name);
-  const [mainAddress, setMainAddress] = useState(address);
-  const [mainCard, setMainCard] = useState(cardNum);
-  const [mainCvv, setMainCvv] = useState(cvv);
-  const [mainExpDate, setMainExpDate] = useState(expDate);
+  const [fullName, setFullName] = useState(user?.name);
+  const [mainAddress, setMainAddress] = useState(user?.address);
+  const [mainCard, setMainCard] = useState(user?.cardNum);
+  const [mainCvv, setMainCvv] = useState(user?.cvv);
+  const [mainExpDate, setMainExpDate] = useState(user?.expDate);
 
   useEffect(() => {
     if (cartLength < 1) navigate(-1);
@@ -60,11 +58,11 @@ function Checkout() {
       customerDetails,
     };
 
-    placeOrder(item);
+    dispatch(placeOrder(item));
 
     alert(`Order placed successfully! Order number: ${item.id}`);
     navigate('/');
-    clearCart();
+    dispatch(clearCart());
   }
 
   return (
