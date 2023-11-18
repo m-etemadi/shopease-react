@@ -22,17 +22,21 @@ function Checkout() {
   const totalQuantity = useSelector(calculateTotalByProperty('quantity'));
   const subtotal = useSelector(calculateTotalByProperty('totalPrice'));
 
-  const [fullName, setFullName] = useState(user?.name);
-  const [mainAddress, setMainAddress] = useState(user?.address);
-  const [mainCard, setMainCard] = useState(user?.cardNum);
-  const [mainCvv, setMainCvv] = useState(user?.cvv);
-  const [mainExpDate, setMainExpDate] = useState(user?.expDate);
+  const { name, address, cardNum, cvv, expDate } = user;
+
+  const [fullName, setFullName] = useState(name);
+  const [mainAddress, setMainAddress] = useState(address);
+  const [mainCard, setMainCard] = useState(cardNum);
+  const [mainCvv, setMainCvv] = useState(cvv);
+  const [mainExpDate, setMainExpDate] = useState(expDate);
 
   useEffect(() => {
-    if (cartLength < 1) navigate(-1);
+    if (cartLength < 1) {
+      navigate(-1);
+    }
   }, [cartLength, navigate]);
 
-  if (cartLength < 1) return;
+  if (cartLength < 1) return null;
 
   function handleCheckout(e) {
     e.preventDefault();

@@ -10,7 +10,12 @@ const FAKE_USER = {
   expDate: '07 / 25',
 };
 
-const initialState = { user: null, isAuthenticated: false };
+const initialState = {
+  user: localStorage.getItem('user')
+    ? JSON.parse(localStorage.getItem('user'))
+    : null,
+  isAuthenticated: localStorage.getItem('isAuthenticated') === 'true',
+};
 
 const authenticationSlice = createSlice({
   name: 'authentication',
@@ -19,11 +24,15 @@ const authenticationSlice = createSlice({
     login(state) {
       state.user = FAKE_USER;
       state.isAuthenticated = true;
+      localStorage.setItem('user', JSON.stringify(FAKE_USER));
+      localStorage.setItem('isAuthenticated', 'true');
     },
 
     logout(state) {
       state.user = null;
       state.isAuthenticated = false;
+      localStorage.removeItem('user');
+      localStorage.setItem('isAuthenticated', 'false');
     },
   },
 });

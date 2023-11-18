@@ -22,8 +22,8 @@ function UserActions() {
   const totalQuantity = useSelector(calculateTotalByProperty('quantity'));
 
   function handleLogout() {
-    dispatch(clearCart());
     dispatch(logout());
+    dispatch(clearCart());
 
     navigate('/');
   }

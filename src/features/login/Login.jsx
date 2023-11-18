@@ -8,24 +8,18 @@ import Button from '../../ui/Common/Button/Button';
 import styles from './Login.module.css';
 
 function Login() {
-  const [email, setEmail] = useState('john@ecommerce.com');
-  const [password, setPassword] = useState('John1234');
-
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
+
+  const destination = searchParams.get('destination');
 
   const isAuthenticated = useSelector(
     state => state.authentication.isAuthenticated
   );
 
-  const destination = searchParams.get('destination');
-
-  function handleLogin(e) {
-    e.preventDefault();
-
-    if (email && password) dispatch(login(email, password));
-  }
+  const [email, setEmail] = useState('john@ecommerce.com');
+  const [password, setPassword] = useState('John1234');
 
   useEffect(
     function () {
@@ -37,6 +31,12 @@ function Login() {
     },
     [isAuthenticated, navigate, destination]
   );
+
+  function handleLogin(e) {
+    e.preventDefault();
+
+    if (email && password) dispatch(login(email, password));
+  }
 
   return (
     <main className="p-5">
