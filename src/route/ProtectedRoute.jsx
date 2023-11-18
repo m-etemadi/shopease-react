@@ -11,7 +11,7 @@ function ProtectedRoute({ children }) {
 
   useEffect(
     function () {
-      if (!isAuthenticated) navigate('/cart');
+      if (!isAuthenticated) navigate('/login');
     },
     [isAuthenticated, navigate]
   );

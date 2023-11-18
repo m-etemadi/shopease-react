@@ -3,8 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   clearCart,
   calculateTotalByProperty,
-} from '../../features/cart/cartSlice';
-import { logout } from '../../features/login/authenticationSlice';
+} from '../../../features/cart/cartSlice';
+import { logout } from '../../../features/login/authenticationSlice';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';

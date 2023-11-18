@@ -15,6 +15,9 @@ function Checkout() {
   const dispatch = useDispatch();
 
   const user = useSelector(state => state.authentication.user);
+  const isAuthenticated = useSelector(
+    state => state.authentication.isAuthenticated
+  );
   const cartItems = useSelector(state => state.cart.cartItems);
 
   const cartLength = cartItems.length;
@@ -32,7 +35,7 @@ function Checkout() {
 
   useEffect(() => {
     if (cartLength < 1) {
-      navigate(-1);
+      navigate('/cart');
     }
   }, [cartLength, navigate]);
 

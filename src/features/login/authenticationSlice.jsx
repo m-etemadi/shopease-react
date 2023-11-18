@@ -22,10 +22,14 @@ const authenticationSlice = createSlice({
   initialState,
   reducers: {
     login(state) {
+      // const { email, password } = action.payload;
+
+      // if (email === FAKE_USER.email && password === FAKE_USER.password) {
       state.user = FAKE_USER;
       state.isAuthenticated = true;
       localStorage.setItem('user', JSON.stringify(FAKE_USER));
       localStorage.setItem('isAuthenticated', 'true');
+      // }
     },
 
     logout(state) {
