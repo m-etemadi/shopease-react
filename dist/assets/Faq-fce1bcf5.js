@@ -1,1 +1,0 @@
-import{j as a}from"./index-858aa5be.js";function e(){return a.jsx("main",{className:"p-5",children:a.jsx("div",{className:"container",children:a.jsx("h2",{className:"heading-primary",children:"FAQ"})})})}export{e as default};

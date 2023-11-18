@@ -35,7 +35,7 @@ function Login() {
   function handleLogin(e) {
     e.preventDefault();
 
-    if (email && password) dispatch(login(email, password));
+    if (email && password) dispatch(login({ email, password }));
   }
 
   return (
