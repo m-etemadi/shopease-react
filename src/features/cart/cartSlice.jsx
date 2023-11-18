@@ -7,6 +7,10 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem(state, action) {
+      const item = state.cartItems.find(item => item.id === action.payload.id);
+
+      if (item) return;
+
       state.cartItems.push(action.payload);
     },
     removeItem(state, action) {
@@ -44,11 +48,8 @@ export const {
 
 export default cartSlice.reducer;
 
-export const getCurrentQuantityById = id => state =>
-  state.cart.cartItems.find(item => item.id === id)?.quantity ?? 0;
-
-export const calculateTotalById = id => state =>
-  state.cart.cartItems.find(item => item.id === id)?.totalPrice;
+export const getPropertyById = (id, property) => state =>
+  state.cart.cartItems.find(item => item.id === id)?.[property] ?? 0;
 
 export const calculateTotalByProperty = property => state =>
   state.cart.cartItems.reduce((sum, item) => sum + item[property], 0);

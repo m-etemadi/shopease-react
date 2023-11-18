@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { addItem, getCurrentQuantityById } from '../../cart/cartSlice';
+import { addItem, getPropertyById } from '../../cart/cartSlice';
 
 import { formatCurrency } from '../../../utils/helpers';
 
@@ -12,7 +12,7 @@ function ProductItem({ product }) {
 
   const dispatch = useDispatch();
 
-  const currentQuantity = useSelector(getCurrentQuantityById(id));
+  const currentQuantity = useSelector(getPropertyById(id, 'quantity'));
 
   const isInCart = currentQuantity > 0;
 

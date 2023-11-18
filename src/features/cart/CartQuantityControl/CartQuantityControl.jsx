@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   decreaseItemQuantity,
   increaseItemQuantity,
-  getCurrentQuantityById,
+  getPropertyById,
 } from '../cartSlice';
 
 import Button from '../../../ui/Common/Button/Button';
@@ -14,7 +14,7 @@ function CartQuantityControl({ item }) {
 
   const dispatch = useDispatch();
 
-  const currentQuantity = useSelector(getCurrentQuantityById(id));
+  const currentQuantity = useSelector(getPropertyById(id, 'quantity'));
 
   const isAvailable = currentQuantity < totalQuantity;
 
