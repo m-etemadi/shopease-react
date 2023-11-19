@@ -1,13 +1,11 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+
+import { useAuth } from '../contexts/FakeAuthContext';
 
 function ProtectedRoute({ children }) {
+  const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
-
-  const isAuthenticated = useSelector(
-    state => state.authentication.isAuthenticated
-  );
 
   useEffect(
     function () {
