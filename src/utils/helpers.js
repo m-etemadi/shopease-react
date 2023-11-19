@@ -1,16 +1,3 @@
-export function getItemPropertyById(id, property, cartItems) {
-  const item = cartItems.find(item => item.id === id);
-  return item ? item[property] : null;
-}
-
-export function calculateTotalByProperty(cartItems, property) {
-  const item = cartItems
-    .map(item => item[property])
-    .reduce((acc, cur) => acc + cur, 0);
-
-  return item;
-}
-
 export function formatCurrency(value) {
   return new Intl.NumberFormat('en', {
     style: 'currency',
