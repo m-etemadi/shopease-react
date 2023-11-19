@@ -1,6 +1,6 @@
 # ShopEase
 
-This is a simple shopping app built using HTML5, CSS3, React, React Router and ContextAPI.
+This is a simple shopping app built using HTML5, CSS3, React, React Router, Redux and ContextAPI.
 
 ## Features
 
@@ -18,6 +18,8 @@ You can try out a live demo of the application [here](https://shopease-etemadi.n
 ## Technologies Used
 
 - React.js: A JavaScript library for building user interfaces.
+- Redux: State management library. Please refer to the repository's "Redux" branch to see the implementation.
+- ContextAPI: Alternative state management solution. Please refer to the repository's "ContextAPI" branch to see the implementation.
 - HTML, CSS: For the basic structure and styling.
 
 ## Installation
