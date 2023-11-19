@@ -74,7 +74,7 @@ function Checkout() {
           Checkout ({totalQuantity} {totalQuantity > 1 ? 'items' : 'item'})
         </h2>
 
-        <form className={styles.checkout} onSubmit={handleCheckout}>
+        <form className={styles.checkout}>
           <div className={styles.checkoutSection}>
             <h3>Full Name</h3>
             <input
@@ -114,14 +114,16 @@ function Checkout() {
               />
             </div>
           </div>
-
-          <div className={styles.checkoutActions}>
-            <Button type="primary" onClick={() => navigate('/cart')}>
-              Go back
-            </Button>
-            <Button type="primary">Place order</Button>
-          </div>
         </form>
+
+        <div className={styles.checkoutActions}>
+          <Button type="primary" onClick={() => navigate('/cart')}>
+            Go back
+          </Button>
+          <Button type="primary" onClick={handleCheckout}>
+            Place order
+          </Button>
+        </div>
       </div>
     </main>
   );
