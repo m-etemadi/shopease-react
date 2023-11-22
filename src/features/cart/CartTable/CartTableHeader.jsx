@@ -1,6 +1,6 @@
 import styles from './CartTable.module.css';
 
-function CartTableHeader() {
+function CartTableHeader({ removeCell }) {
   return (
     <div className={`${styles.row} ${styles.header}`}>
       <div className={styles.cell}>Products</div>
@@ -8,7 +8,7 @@ function CartTableHeader() {
       <div className={styles.cell}>Price</div>
       <div className={styles.cell}>Quantity</div>
       <div className={styles.cell}>Total</div>
-      <div className={styles.cell}>Remove</div>
+      {removeCell && <div className={styles.cell}>Remove</div>}
     </div>
   );
 }

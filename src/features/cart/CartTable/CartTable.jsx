@@ -10,10 +10,10 @@ function CartTable() {
 
   return (
     <div className={styles.cartTable}>
-      <CartTableHeader />
+      <CartTableHeader removeCell={true} />
 
       {cartItems.map(item => (
-        <CartTableRow key={item.id} item={item} />
+        <CartTableRow key={item.id} item={item} removeCell={true} />
       ))}
     </div>
   );

@@ -11,16 +11,15 @@ import { calculateTotalByProperty } from '../cart/cartSlice';
 
 import { createOrder } from '../../services/apiProducts';
 
-import { formatDate, generateRandomID } from '../../utils/helpers';
+import {
+  formatDate,
+  generateRandomID,
+  cardDataValidation,
+} from '../../utils/helpers';
 
 import Button from '../../ui/Common/Button/Button';
 
 import styles from './Order.module.css';
-
-const isValidCardData = str =>
-  /^(?:-(?:[1-9](?:\d{0,2}(?:,\d{3})+|\d*))|(?:0|(?:[1-9](?:\d{0,2}(?:,\d{3})+|\d*))))(?:.\d+|)$/.test(
-    str
-  );
 
 function Checkout() {
   const navigate = useNavigate();
@@ -139,11 +138,11 @@ export async function action({ request }) {
 
   const errors = {};
 
-  if (!isValidCardData(order.cardNumber)) {
+  if (!cardDataValidation(order.cardNumber)) {
     errors.cardNumber = 'Please insert your Card Number in correct format!';
   }
 
-  if (!isValidCardData(order.cardCvv)) {
+  if (!cardDataValidation(order.cardCvv)) {
     errors.cardCvv = 'Please insert your CVV in correct format!';
   }
 

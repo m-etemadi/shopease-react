@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import styles from './CartTable.module.css';
 
-function CartTableRow({ item }) {
+function CartTableRow({ item, removeCell }) {
   const { id, title, price, image } = item;
 
   const dispatch = useDispatch();
@@ -35,11 +35,13 @@ function CartTableRow({ item }) {
       <div className={styles.cell}>
         <span>{formatCurrency(totalPrice)}</span>
       </div>
-      <div className={styles.cell}>
-        <Button type="remove" onClick={() => dispatch(removeItem(id))}>
-          <FontAwesomeIcon icon={faTrash} size="xl" />
-        </Button>
-      </div>
+      {removeCell && (
+        <div className={styles.cell}>
+          <Button type="remove" onClick={() => dispatch(removeItem(id))}>
+            <FontAwesomeIcon icon={faTrash} size="xl" />
+          </Button>
+        </div>
+      )}
     </div>
   );
 }

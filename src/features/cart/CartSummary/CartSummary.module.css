@@ -18,10 +18,3 @@
 .cartSummary .cell:last-child {
   text-align: right;
 }
-
-.cartSummaryActions {
-  margin-top: 3rem;
-  display: flex;
-  justify-content: center;
-  column-gap: 1rem;
-}

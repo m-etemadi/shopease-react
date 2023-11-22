@@ -30,3 +30,9 @@ export function reduceTitleLength(title) {
   const max = 20;
   return title.length > max ? `${title.slice(0, max)}...` : title;
 }
+
+export function cardDataValidation(str) {
+  /^(?:-(?:[1-9](?:\d{0,2}(?:,\d{3})+|\d*))|(?:0|(?:[1-9](?:\d{0,2}(?:,\d{3})+|\d*))))(?:.\d+|)$/.test(
+    str
+  );
+}
