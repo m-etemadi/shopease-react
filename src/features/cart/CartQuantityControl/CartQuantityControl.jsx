@@ -10,13 +10,11 @@ import Button from '../../../ui/Common/Button/Button';
 import styles from './CartQuantityControl.module.css';
 
 function CartQuantityControl({ item }) {
-  const { id, totalQuantity } = item;
+  const { id } = item;
 
   const dispatch = useDispatch();
 
   const currentQuantity = useSelector(getPropertyById(id, 'quantity'));
-
-  const isAvailable = currentQuantity < totalQuantity;
 
   return (
     <>
@@ -29,14 +27,12 @@ function CartQuantityControl({ item }) {
 
       <span className={styles.quantity}>{currentQuantity}</span>
 
-      {isAvailable && (
-        <Button
-          type="quantity"
-          onClick={() => dispatch(increaseItemQuantity(id))}
-        >
-          +
-        </Button>
-      )}
+      <Button
+        type="quantity"
+        onClick={() => dispatch(increaseItemQuantity(id))}
+      >
+        +
+      </Button>
     </>
   );
 }

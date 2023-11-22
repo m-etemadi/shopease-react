@@ -16,9 +16,11 @@ import Products, {
 } from './features/products/Products';
 import Login from './features/Login/Login';
 import Cart from './features/cart/Cart';
-import Checkout from './features/Order/Checkout';
+import Checkout, {
+  action as createOrderAction,
+} from './features/Order/Checkout';
 import MyOrders from './features/order/MyOrders';
-import ViewOrder from './features/order/ViewOrder';
+import ViewOrder, { loader as orderLoader } from './features/order/ViewOrder';
 
 import Error from './ui/Common/Error';
 
@@ -49,6 +51,7 @@ const router = createBrowserRouter([
       {
         path: '/order/checkout',
         element: <Checkout />,
+        action: createOrderAction,
       },
       {
         path: '/my-orders',
@@ -57,6 +60,8 @@ const router = createBrowserRouter([
       {
         path: '/my-orders/:orderId',
         element: <ViewOrder />,
+        loader: orderLoader,
+        errorElement: <Error />,
       },
     ],
   },

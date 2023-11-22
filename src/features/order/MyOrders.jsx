@@ -68,7 +68,7 @@ function MyOrders() {
               <div className={styles.cell}>DELIVER TO</div>
               <div className={styles.cell}>ORDER ID</div>
             </div>
-            <Link className={styles.row}>
+            <Link to={`/my-orders/${searchResult.id}`} className={styles.row}>
               <div className={styles.cell}>13 November, 2023</div>
               <div className={styles.cell}>${searchResult.subtotal}</div>
               <div className={styles.cell}>Mohammad Etemadi</div>

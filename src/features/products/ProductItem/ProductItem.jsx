@@ -24,7 +24,6 @@ function ProductItem({ product }) {
       image,
       quantity: 1,
       totalPrice: price * 1,
-      totalQuantity: 10,
     };
 
     dispatch(addItem(item));
