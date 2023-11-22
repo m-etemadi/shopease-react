@@ -71,10 +71,23 @@ textarea {
   font-size: 1.6rem;
 }
 
-.container {
-  margin: 0 auto;
-  max-width: 120rem;
-  padding: 0 1.5rem;
+.p-2 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.p-5 {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+
+.message {
+  text-align: center;
+}
+
+.error {
+  margin: 3rem 0;
+  color: var(--color-red--1);
 }
 
 .heading-primary {
@@ -84,12 +97,15 @@ textarea {
   margin-bottom: 5rem;
 }
 
-.p-2 {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+.form-input {
+  width: 100%;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--color-light--1);
 }
 
-.p-5 {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+.container {
+  margin: 0 auto;
+  max-width: 120rem;
+  padding: 0 1.5rem;
 }

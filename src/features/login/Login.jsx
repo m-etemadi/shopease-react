@@ -39,34 +39,36 @@ function Login() {
     dispatch(login({ email, password }));
   }
 
-  return (
-    <main className="p-5">
-      <div className="container">
-        <h2 className="heading-primary">Login</h2>
-        <div className={styles.login}>
-          <form className={styles.loginForm} onSubmit={handleLogin}>
-            <div>
-              <input
-                type="email"
-                placeholder="Email Address"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-              />
-            </div>
-            <div>
-              <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-              />
-            </div>
+  if (isAuthenticated) return null;
 
-            <Button type="primary">Continue</Button>
-          </form>
-        </div>
+  return (
+    <div className="container">
+      <h2 className="heading-primary">Login</h2>
+      <div className={styles.login}>
+        <form className={styles.loginForm} onSubmit={handleLogin}>
+          <div>
+            <input
+              className="form-input"
+              type="email"
+              placeholder="Email Address"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+            />
+          </div>
+          <div>
+            <input
+              className="form-input"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+            />
+          </div>
+
+          <Button type="primary">Continue</Button>
+        </form>
       </div>
-    </main>
+    </div>
   );
 }
 

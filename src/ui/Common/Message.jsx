@@ -1,8 +1,6 @@
-import styles from './Message.module.css';
-
 function Message({ message }) {
   return (
-    <div className={styles.message}>
+    <div className="message">
       <p>{message}</p>
     </div>
   );

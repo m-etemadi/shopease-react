@@ -1,5 +1,5 @@
-.checkout {
-  width: 45rem;
+.ordersContainer {
+  width: 80rem;
   margin: 0 auto;
 }
 
@@ -11,16 +11,6 @@
   margin-bottom: 1rem;
 }
 
-.checkoutSection input {
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  border: 1px solid var(--color-light--1);
-}
-
-.singleInput {
-  width: 100%;
-}
-
 .doubleInput {
   display: flex;
   justify-content: flex-start;
@@ -28,12 +18,49 @@
 }
 
 .doubleInput input {
-  width: 8rem;
+  width: 7rem;
   text-align: center;
+  padding: 1rem;
+  border: 1px solid var(--color-light--1);
 }
 
 .checkoutActions {
   display: flex;
   justify-content: center;
   column-gap: 1rem;
+}
+
+.searchOrders {
+  margin-bottom: 3rem;
+}
+
+.searchResult {
+  font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-light--1);
+}
+
+.searchResult .header {
+  text-transform: uppercase;
+  display: flex;
+  font-weight: bold;
+  background-color: var(--color-light--2);
+}
+
+.searchResult .cell {
+  text-align: center;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.searchResult .row {
+  display: flex;
+  color: inherit;
+}
+
+.searchResult .row:not(:last-child) {
+  border-bottom: 1px solid var(--color-light--1);
 }

@@ -16,3 +16,8 @@ export function generateRandomID() {
 
   return id;
 }
+
+export function reduceTitleLength(title) {
+  const max = 20;
+  return title.length > max ? `${title.slice(0, max)}...` : title;
+}

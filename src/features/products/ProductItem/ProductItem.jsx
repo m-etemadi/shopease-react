@@ -1,14 +1,14 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { addItem, getPropertyById } from '../../cart/cartSlice';
 
-import { formatCurrency } from '../../../utils/helpers';
+import { formatCurrency, reduceTitleLength } from '../../../utils/helpers';
 
 import Button from '../../../ui/Common/Button/Button';
 
 import styles from './ProductItem.module.css';
 
 function ProductItem({ product }) {
-  const { id, productName, price, productImage, totalQuantity } = product;
+  const { id, title, price, image } = product;
 
   const dispatch = useDispatch();
 
@@ -19,12 +19,12 @@ function ProductItem({ product }) {
   function handleAddToCart() {
     const item = {
       id,
-      productName,
+      title,
       price,
-      productImage,
+      image,
       quantity: 1,
       totalPrice: price * 1,
-      totalQuantity,
+      totalQuantity: 10,
     };
 
     dispatch(addItem(item));
@@ -32,9 +32,9 @@ function ProductItem({ product }) {
 
   return (
     <div className={styles.productItem}>
-      <img src={productImage} alt={productName} />
+      <img src={image} alt={reduceTitleLength(title)} loading="lazy" />
       <div className={styles.info}>
-        <h2>{productName}</h2>
+        <h2>{reduceTitleLength(title)}</h2>
         <span>{formatCurrency(price)}</span>
       </div>
       <Button onClick={handleAddToCart} type={isInCart ? 'added' : 'primary'}>

@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { removeItem, getPropertyById } from '../cartSlice';
 
-import { formatCurrency } from '../../../utils/helpers';
+import { formatCurrency, reduceTitleLength } from '../../../utils/helpers';
 
 import Button from '../../../ui/Common/Button/Button';
 import CartQuantityControl from '../CartQuantityControl/CartQuantityControl';
@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styles from './CartTable.module.css';
 
 function CartTableRow({ item }) {
-  const { id, productName, productImage, price } = item;
+  const { id, title, price, image } = item;
 
   const dispatch = useDispatch();
 
@@ -21,10 +21,10 @@ function CartTableRow({ item }) {
   return (
     <div className={styles.row}>
       <div className={styles.cell}>
-        <img src={productImage} alt={productName} />
+        <img src={image} alt={reduceTitleLength(title)} loading="lazy" />
       </div>
       <div className={styles.cell}>
-        <strong>{productName}</strong>
+        <strong>{reduceTitleLength(title)}</strong>
       </div>
       <div className={styles.cell}>
         <span>{formatCurrency(price)}</span>
