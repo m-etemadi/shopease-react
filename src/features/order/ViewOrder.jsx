@@ -2,18 +2,18 @@ import { useLoaderData } from 'react-router-dom';
 
 import { getOrder } from '../../services/apiProducts';
 
-import styles from './Order.module.css';
+import OrderTable from './OrderTable/OrderTable';
 
 function ViewOrder() {
   const order = useLoaderData();
 
-  const { id, totalQuantity, subtotal } = order;
+  const { id, orderedItems } = order;
 
   return (
-    <div className={styles.ordersContainer}>
+    <div className="container">
       <h2 className="heading-primary">Order ID: #{id}</h2>
-      <p>{totalQuantity}</p>
-      <p>{subtotal}</p>
+
+      <OrderTable orderedItems={orderedItems} />
     </div>
   );
 }

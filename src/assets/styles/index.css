@@ -109,3 +109,35 @@ textarea {
   max-width: 120rem;
   padding: 0 1.5rem;
 }
+
+.table {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-light--1);
+  margin-bottom: 8rem;
+}
+
+.table .header {
+  font-weight: bold;
+}
+
+.table .row {
+  display: flex;
+}
+
+.table .row:not(:last-child) {
+  border-bottom: 1px solid var(--color-light--1);
+}
+
+.table .cell {
+  flex: 1;
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.table .cell img {
+  width: 9rem;
+}
