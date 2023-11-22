@@ -5,6 +5,15 @@ export function formatCurrency(value) {
   }).format(value);
 }
 
+export function formatDate(dateStr) {
+  return new Intl.DateTimeFormat('en', {
+    day: 'numeric',
+    month: 'short',
+    hour: '2-digit',
+    minute: '2-digit',
+  }).format(new Date(dateStr));
+}
+
 export function generateRandomID() {
   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
   let id = '';

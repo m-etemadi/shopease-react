@@ -1,18 +1,32 @@
 import { useEffect, useState } from 'react';
-import { Form, redirect, useNavigate } from 'react-router-dom';
+import {
+  Form,
+  redirect,
+  useActionData,
+  useNavigate,
+  useNavigation,
+} from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { calculateTotalByProperty } from '../cart/cartSlice';
 
 import { createOrder } from '../../services/apiProducts';
 
-import { generateRandomID } from '../../utils/helpers';
+import { formatDate, generateRandomID } from '../../utils/helpers';
 
 import Button from '../../ui/Common/Button/Button';
 
 import styles from './Order.module.css';
 
+const isValidCardData = str =>
+  /^(?:-(?:[1-9](?:\d{0,2}(?:,\d{3})+|\d*))|(?:0|(?:[1-9](?:\d{0,2}(?:,\d{3})+|\d*))))(?:.\d+|)$/.test(
+    str
+  );
+
 function Checkout() {
   const navigate = useNavigate();
+  const navigation = useNavigation();
+  const formErrors = useActionData();
+  const isSubmitting = navigation.state === 'submitting';
 
   const user = useSelector(state => state.authentication.user);
   const isAuthenticated = useSelector(
@@ -22,14 +36,13 @@ function Checkout() {
 
   const cartLength = cartItems.length;
 
+  const orderedItems = [...cartItems];
+
   const totalQuantity = useSelector(calculateTotalByProperty('quantity'));
   const subtotal = useSelector(calculateTotalByProperty('totalPrice'));
 
   const [fullName, setFullName] = useState(user?.name);
   const [mainAddress, setMainAddress] = useState(user?.address);
-  const [mainCard, setMainCard] = useState(user?.cardNum);
-  const [mainCvv, setMainCvv] = useState(user?.cvv);
-  const [mainExpDate, setMainExpDate] = useState(user?.expDate);
 
   useEffect(() => {
     if (!isAuthenticated) navigate('/login');
@@ -37,8 +50,6 @@ function Checkout() {
   }, [cartLength, isAuthenticated, navigate]);
 
   if (!cartLength || !isAuthenticated) return null;
-
-  const orderedItems = [...cartItems];
 
   return (
     <div className="container">
@@ -55,6 +66,7 @@ function Checkout() {
             type="text"
             value={fullName}
             onChange={e => setFullName(e.target.value)}
+            required
           />
         </div>
         <div className={styles.checkoutSection}>
@@ -65,6 +77,7 @@ function Checkout() {
             type="text"
             value={mainAddress}
             onChange={e => setMainAddress(e.target.value)}
+            required
           />
         </div>
         <div className={styles.checkoutSection}>
@@ -73,22 +86,13 @@ function Checkout() {
             className="form-input"
             name="cardNumber"
             type="text"
-            value={mainCard}
-            onChange={e => setMainCard(+e.target.value)}
+            required
           />
+          {formErrors?.cardNumber && <p>{formErrors.cardNumber}</p>}
           <div className={styles.doubleInput}>
-            <input
-              name="cardCvv"
-              type="text"
-              value={mainCvv}
-              onChange={e => setMainCvv(+e.target.value)}
-            />
-            <input
-              name="cardExpiry"
-              type="text"
-              value={mainExpDate}
-              onChange={e => setMainExpDate(e.target.value)}
-            />
+            <input name="cardCvv" type="text" required />
+            <input name="cardExpiry" type="text" required />
+            {formErrors?.cardCvv && <p>{formErrors.cardCvv}</p>}
 
             <input
               type="hidden"
@@ -111,7 +115,9 @@ function Checkout() {
           <Button type="primary" onClick={() => navigate('/cart')}>
             Go back
           </Button>
-          <Button type="primary">Place order</Button>
+          <Button type="primary">
+            {isSubmitting ? 'Placing order...' : 'Place order'}
+          </Button>
         </div>
       </Form>
     </div>
@@ -125,10 +131,23 @@ export async function action({ request }) {
   const order = {
     ...data,
     id: generateRandomID(),
+    date: formatDate(Date.now()),
     orderedItems: JSON.parse(data.orderedItems),
     totalQuantity: JSON.parse(data.totalQuantity),
     subtotal: JSON.parse(data.subtotal),
   };
+
+  const errors = {};
+
+  if (!isValidCardData(order.cardNumber)) {
+    errors.cardNumber = 'Please insert your Card Number in correct format!';
+  }
+
+  if (!isValidCardData(order.cardCvv)) {
+    errors.cardCvv = 'Please insert your CVV in correct format!';
+  }
+
+  if (Object.keys(errors).length > 0) return errors;
 
   const newOrder = await createOrder(order);
 

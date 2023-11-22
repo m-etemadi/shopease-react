@@ -5,9 +5,6 @@ const FAKE_USER = {
   address: '6/42 Crown Street, Wollongong 2500, NSW',
   email: 'john@ecommerce.com',
   password: 'John1234',
-  cardNum: 5217291895377726,
-  cvv: 199,
-  expDate: '07 / 25',
 };
 
 const initialState = {

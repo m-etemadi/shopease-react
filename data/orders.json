@@ -1,3 +1,46 @@
 {
-  "orders": []
+  "orders": [
+    {
+      "fullName": "John Smith",
+      "address": "6/42 Crown Street, Wollongong 2500, NSW",
+      "cardNumber": "475347534985798347",
+      "cardCvv": "sfdds",
+      "cardExpiry": "07/99",
+      "orderedItems": [
+        {
+          "id": 2,
+          "title": "Mens Casual Premium Slim Fit T-Shirts ",
+          "price": 22.3,
+          "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+          "quantity": 1,
+          "totalPrice": 22.3
+        }
+      ],
+      "totalQuantity": 1,
+      "subtotal": 22.3,
+      "id": "BTPN1Y",
+      "date": "Nov 22, 03:31 PM"
+    },
+    {
+      "fullName": "John Smith",
+      "address": "6/42 Crown Street, Wollongong 2500, NSW",
+      "cardNumber": "456456456",
+      "cardCvv": "dfgdfg",
+      "cardExpiry": "3/22",
+      "orderedItems": [
+        {
+          "id": 2,
+          "title": "Mens Casual Premium Slim Fit T-Shirts ",
+          "price": 22.3,
+          "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
+          "quantity": 1,
+          "totalPrice": 22.3
+        }
+      ],
+      "totalQuantity": 1,
+      "subtotal": 22.3,
+      "id": "ABW40T",
+      "date": "Nov 22, 03:31 PM"
+    }
+  ]
 }

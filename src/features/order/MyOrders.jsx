@@ -1,16 +1,3 @@
-const data = [
-  {
-    id: 'ABCD',
-    totalQuantity: 3,
-    subtotal: 59.99,
-  },
-  {
-    id: 'EFGH',
-    totalQuantity: 7,
-    subtotal: 199.93,
-  },
-];
-
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -18,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Message from '../../ui/Common/Message';
 
 import styles from './order.module.css';
+import { getOrder } from '../../services/apiProducts';
 
 function MyOrders() {
   const navigate = useNavigate();
@@ -35,14 +23,14 @@ function MyOrders() {
 
   if (!isAuthenticated) return null;
 
-  function handleSearchOrder(e) {
+  async function handleSearchOrder(e) {
     e.preventDefault();
 
     if (!query) return;
 
-    const result = data.find(order => order.id === query);
-
+    const result = await getOrder(query);
     setSearchResult(result);
+
     setQuery('');
   }
 
@@ -69,9 +57,9 @@ function MyOrders() {
               <div className={styles.cell}>ORDER ID</div>
             </div>
             <Link to={`/my-orders/${searchResult.id}`} className={styles.row}>
-              <div className={styles.cell}>13 November, 2023</div>
+              <div className={styles.cell}>{searchResult.date}</div>
               <div className={styles.cell}>${searchResult.subtotal}</div>
-              <div className={styles.cell}>Mohammad Etemadi</div>
+              <div className={styles.cell}>{searchResult.fullName}</div>
               <div className={styles.cell}># {searchResult.id}</div>
             </Link>
           </div>
