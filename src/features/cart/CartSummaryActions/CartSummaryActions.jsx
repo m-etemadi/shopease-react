@@ -3,8 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { clearCart } from '../cartSlice';
 import Button from '../../../ui/Common/Button/Button';
 
-import styles from './CartSummaryActions.module.css';
-
 function CartSummaryActions() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -20,7 +18,7 @@ function CartSummaryActions() {
   }
 
   return (
-    <div className={styles.cartSummaryActions}>
+    <div className="table-summary-actions">
       <Button type="primary" onClick={() => navigate('/')}>
         Continue Shopping
       </Button>

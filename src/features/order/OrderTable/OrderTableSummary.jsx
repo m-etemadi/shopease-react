@@ -1,16 +1,14 @@
-import { useSelector } from 'react-redux';
-import { calculateTotalByProperty } from '../cartSlice';
+import { useNavigate } from 'react-router-dom';
 
 import { formatCurrency } from '../../../utils/helpers';
 
-import CartSummaryActions from '../CartSummaryActions/CartSummaryActions';
+import Button from '../../../ui/Common/Button/Button';
 
-function CartSummary() {
-  const subtotal = useSelector(calculateTotalByProperty('totalPrice'));
-
+function OrderTableSummary({ subtotal }) {
+  const navigate = useNavigate();
   return (
     <div className="table-summary">
-      <h2 className="heading-primary">Cart totals</h2>
+      <h2 className="heading-primary">Order totals</h2>
       <div className="row">
         <div className="cell">Subtotal</div>
         <div className="cell">{formatCurrency(subtotal)}</div>
@@ -27,9 +25,13 @@ function CartSummary() {
           <strong>{formatCurrency(subtotal)}</strong>
         </div>
       </div>
-      <CartSummaryActions />
+      <div className="table-summary-actions">
+        <Button type="primary" onClick={() => navigate(-1)}>
+          Go back
+        </Button>
+      </div>
     </div>
   );
 }
 
-export default CartSummary;
+export default OrderTableSummary;
