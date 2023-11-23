@@ -8,7 +8,7 @@ import OrderTableSummary from './OrderTable/OrderTableSummary';
 function ViewOrder() {
   const order = useLoaderData();
 
-  const { id, orderedItems, subtotal } = order;
+  const { id, orderedItems } = order;
 
   return (
     <div className="container">
@@ -16,7 +16,7 @@ function ViewOrder() {
 
       <OrderTable orderedItems={orderedItems} />
 
-      <OrderTableSummary subtotal={subtotal} />
+      <OrderTableSummary order={order} />
     </div>
   );
 }

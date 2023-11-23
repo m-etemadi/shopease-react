@@ -17,13 +17,13 @@ function Navbar() {
           </NavLink>
         </li>
 
-        {isAuthenticated && (
+        {/* {isAuthenticated && (
           <li>
             <NavLink title="My orders" to="/my-orders">
               My orders
             </NavLink>
           </li>
-        )}
+        )} */}
       </ul>
     </nav>
   );

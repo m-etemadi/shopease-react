@@ -1,14 +1,8 @@
-// import { lazy, Suspense } from 'react';
 import {
   createBrowserRouter,
   RouterProvider,
   Navigate,
 } from 'react-router-dom';
-
-// const Products = lazy(() => import('./features/products/Products'));
-// const Login = lazy(() => import('./features/login/Login'));
-// const Cart = lazy(() => import('./features/cart/Cart'));
-// const Order = lazy(() => import('./features/order/Order'));
 
 import AppLayout from './ui/AppLayout';
 import Products, {
@@ -18,8 +12,7 @@ import Login from './features/Login/Login';
 import Cart from './features/cart/Cart';
 import Checkout, {
   action as createOrderAction,
-} from './features/Order/Checkout';
-import MyOrders from './features/order/MyOrders';
+} from './features/order/Checkout';
 import ViewOrder, { loader as orderLoader } from './features/order/ViewOrder';
 
 import Error from './ui/Common/Error';
@@ -52,10 +45,6 @@ const router = createBrowserRouter([
         path: '/order/checkout',
         element: <Checkout />,
         action: createOrderAction,
-      },
-      {
-        path: '/my-orders',
-        element: <MyOrders />,
       },
       {
         path: '/my-orders/:orderId',
