@@ -9,8 +9,6 @@ import { logout } from '../../../features/login/authenticationSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
-import SearchOrders from '../../../features/order/SearchOrders';
-
 import styles from './userActions.module.css';
 
 function UserActions() {
@@ -31,35 +29,32 @@ function UserActions() {
   }
 
   return (
-    <div className={styles.userActions}>
-      <SearchOrders />
-      <ul>
-        {!isAuthenticated ? (
-          <li>
-            <Link title="Login" to="login">
-              Login
-            </Link>
-          </li>
-        ) : (
-          <li>
-            <Link title="Logout" onClick={handleLogout}>
-              Logout
-            </Link>
-          </li>
-        )}
-
+    <ul className={styles.userActions}>
+      {!isAuthenticated ? (
         <li>
-          <Link title="Cart" to="cart">
-            {cartLength > 0 && (
-              <span className={styles.badge}>
-                {totalQuantity > 9 ? '+10' : totalQuantity}
-              </span>
-            )}
-            <FontAwesomeIcon icon={faShoppingCart} size="2xl" />
+          <Link title="Login" to="login">
+            Login
           </Link>
         </li>
-      </ul>
-    </div>
+      ) : (
+        <li>
+          <Link title="Logout" onClick={handleLogout}>
+            Logout
+          </Link>
+        </li>
+      )}
+
+      <li>
+        <Link title="Cart" to="cart">
+          {cartLength > 0 && (
+            <span className={styles.badge}>
+              {totalQuantity > 9 ? '+10' : totalQuantity}
+            </span>
+          )}
+          <FontAwesomeIcon icon={faShoppingCart} size="2xl" />
+        </Link>
+      </li>
+    </ul>
   );
 }
 

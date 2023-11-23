@@ -29,6 +29,7 @@ function Checkout() {
   const navigate = useNavigate();
   const navigation = useNavigation();
   const formErrors = useActionData();
+
   const isSubmitting = navigation.state === 'submitting';
 
   const user = useSelector(state => state.authentication.user);

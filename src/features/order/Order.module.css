@@ -32,24 +32,30 @@
 
 .searchOrders input {
   margin-bottom: 0;
-  padding: 0.8rem;
+  padding: 1rem;
+  font-size: 1.4rem;
+  width: 30rem;
 }
 
-.searchResult {
+.orderHistory {
   font-size: 1.4rem;
   display: flex;
   flex-direction: column;
   border: 1px solid var(--color-light--1);
 }
 
-.searchResult .header {
+.orderHistory a {
+  color: inherit;
+}
+
+.orderHistory .header {
   text-transform: uppercase;
   display: flex;
   font-weight: bold;
   background-color: var(--color-light--2);
 }
 
-.searchResult .cell {
+.orderHistory .cell {
   text-align: center;
   display: flex;
   flex: 1;
@@ -57,11 +63,11 @@
   padding: 2rem;
 }
 
-.searchResult .row {
+.orderHistory .row {
   display: flex;
   color: inherit;
 }
 
-.searchResult .row:not(:last-child) {
+.orderHistory .row:not(:last-child) {
   border-bottom: 1px solid var(--color-light--1);
 }

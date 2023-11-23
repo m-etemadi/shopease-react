@@ -90,6 +90,10 @@ textarea {
   color: var(--color-red--1);
 }
 
+.green {
+  color: var(--color-green);
+}
+
 .heading-primary {
   font-size: 3rem;
   font-weight: 400;

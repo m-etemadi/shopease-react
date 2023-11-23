@@ -2,6 +2,8 @@ import { useLoaderData } from 'react-router-dom';
 
 import { getOrder } from '../../services/apiProducts';
 
+import ProtectedRoute from '../../route/ProtectedRoute';
+
 import OrderTable from './OrderTable/OrderTable';
 import OrderTableSummary from './OrderTable/OrderTableSummary';
 
@@ -11,13 +13,15 @@ function ViewOrder() {
   const { id, orderedItems } = order;
 
   return (
-    <div className="container">
-      <h2 className="heading-primary">Order ID: #{id}</h2>
+    <ProtectedRoute>
+      <div className="container">
+        <h2 className="heading-primary">Order ID: #{id}</h2>
 
-      <OrderTable orderedItems={orderedItems} />
+        <OrderTable orderedItems={orderedItems} />
 
-      <OrderTableSummary order={order} />
-    </div>
+        <OrderTableSummary order={order} />
+      </div>
+    </ProtectedRoute>
   );
 }
 

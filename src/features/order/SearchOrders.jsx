@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import styles from './order.module.css';
 
-function MyOrders() {
+function SearchOrders() {
   const navigate = useNavigate();
 
   const [query, setQuery] = useState('');
@@ -30,4 +30,4 @@ function MyOrders() {
   );
 }
 
-export default MyOrders;
+export default SearchOrders;

@@ -18,6 +18,14 @@ export async function getOrder(id) {
   return data;
 }
 
+export async function getAllOrders() {
+  const res = await fetch(`${ORDERS_URL}/orders/`);
+  if (!res.ok) throw Error(`Couldn't find orders`);
+
+  const data = await res.json();
+  return data;
+}
+
 export async function createOrder(newOrder) {
   try {
     const res = await fetch(`${ORDERS_URL}/orders`, {

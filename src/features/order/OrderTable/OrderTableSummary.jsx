@@ -7,6 +7,12 @@ function OrderTableSummary({ order }) {
     <div className="table-summary">
       <h2 className="heading-primary">Order details</h2>
       <div className="row">
+        <div className="cell">Status</div>
+        <div className="cell">
+          <span className="green">Preparing</span>
+        </div>
+      </div>
+      <div className="row">
         <div className="cell">Order placed</div>
         <div className="cell">{date}</div>
       </div>

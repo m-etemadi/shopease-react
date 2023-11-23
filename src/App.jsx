@@ -13,6 +13,7 @@ import Cart from './features/cart/Cart';
 import Checkout, {
   action as createOrderAction,
 } from './features/order/Checkout';
+import MyOrders, { loader as allOrdersLoader } from './features/order/MyOrders';
 import ViewOrder, { loader as orderLoader } from './features/order/ViewOrder';
 
 import Error from './ui/Common/Error';
@@ -45,6 +46,12 @@ const router = createBrowserRouter([
         path: '/order/checkout',
         element: <Checkout />,
         action: createOrderAction,
+      },
+      {
+        path: '/my-orders',
+        element: <MyOrders />,
+        loader: allOrdersLoader,
+        errorElement: <Error />,
       },
       {
         path: '/my-orders/:orderId',
