@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
-import { calculateTotalByProperty } from '../cartSlice';
+import { calculateTotalByProperty } from './cartSlice';
 
-import { formatCurrency } from '../../../utils/helpers';
+import { formatCurrency } from '../../utils/helpers';
 
-import CartSummaryActions from '../CartSummaryActions/CartSummaryActions';
+import CartSummaryActions from './CartSummaryActions';
 
 function CartSummary() {
   const subtotal = useSelector(calculateTotalByProperty('totalPrice'));

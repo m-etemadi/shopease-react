@@ -10,7 +10,7 @@ function Products() {
   const allProducts = useLoaderData();
 
   return (
-    <div className={`container ${styles.container}`}>
+    <div className={`container-primary ${styles.container}`}>
       {allProducts.map(product => (
         <ProductItem key={product.id} product={product} />
       ))}

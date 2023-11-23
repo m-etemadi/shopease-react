@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
-import { clearCart } from '../cartSlice';
-import Button from '../../../ui/Common/Button/Button';
+import { clearCart } from './cartSlice';
+import Button from '../../ui/Common/Button/Button';
 
 function CartSummaryActions() {
   const navigate = useNavigate();

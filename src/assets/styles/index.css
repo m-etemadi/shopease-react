@@ -108,9 +108,15 @@ textarea {
   border: 1px solid var(--color-light--1);
 }
 
-.container {
+.container-primary {
   margin: 0 auto;
   max-width: 120rem;
+  padding: 0 1.5rem;
+}
+
+.container-secondary {
+  margin: 0 auto;
+  max-width: 80rem;
   padding: 0 1.5rem;
 }
 

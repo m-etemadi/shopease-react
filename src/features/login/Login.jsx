@@ -42,7 +42,7 @@ function Login() {
   if (isAuthenticated) return null;
 
   return (
-    <div className="container">
+    <div className="container-secondary">
       <h2 className="heading-primary">Login</h2>
       <div className={styles.login}>
         <form className={styles.loginForm} onSubmit={handleLogin}>

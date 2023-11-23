@@ -14,7 +14,7 @@ function ViewOrder() {
 
   return (
     <ProtectedRoute>
-      <div className="container">
+      <div className="container-primary">
         <h2 className="heading-primary">Order ID: #{id}</h2>
 
         <OrderTable orderedItems={orderedItems} />

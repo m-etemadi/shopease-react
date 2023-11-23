@@ -46,7 +46,7 @@ function Checkout() {
 
   return (
     <ProtectedRoute>
-      <div className="container">
+      <div className="container-secondary">
         <h2 className="heading-primary">
           Checkout ({totalQuantity} {totalQuantity > 1 ? 'items' : 'item'})
         </h2>
@@ -78,6 +78,8 @@ function Checkout() {
           </div>
           <div className={styles.checkoutSection}>
             <h3>Cart Details</h3>
+            {formErrors?.cardNumber && <p>{formErrors.cardNumber}</p>}
+            {formErrors?.cardCvv && <p>{formErrors.cardCvv}</p>}
             <input
               className="form-input"
               name="cardNumber"
@@ -85,7 +87,7 @@ function Checkout() {
               placeholder="Card Number"
               required
             />
-            {formErrors?.cardNumber && <p>{formErrors.cardNumber}</p>}
+
             <div className={styles.doubleInput}>
               <input name="cardCvv" type="text" placeholder="CVV" required />
               <input
@@ -94,8 +96,6 @@ function Checkout() {
                 placeholder="Expiry"
                 required
               />
-              {formErrors?.cardCvv && <p>{formErrors.cardCvv}</p>}
-
               <input
                 type="hidden"
                 name="orderedItems"
