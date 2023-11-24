@@ -116,7 +116,7 @@ textarea {
 
 .container-secondary {
   margin: 0 auto;
-  max-width: 80rem;
+  max-width: 75rem;
   padding: 0 1.5rem;
 }
 
@@ -152,12 +152,6 @@ textarea {
   width: 9rem;
 }
 
-.table-summary {
-  width: 60rem;
-  margin: 0 auto;
-  margin-top: 4rem;
-}
-
 .table-summary .row {
   display: flex;
 }
@@ -173,7 +167,7 @@ textarea {
   text-align: right;
 }
 
-.table-summary-actions {
+.action-buttons {
   margin-top: 3rem;
   display: flex;
   justify-content: center;

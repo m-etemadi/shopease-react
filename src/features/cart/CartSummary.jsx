@@ -3,13 +3,11 @@ import { calculateTotalByProperty } from './cartSlice';
 
 import { formatCurrency } from '../../utils/helpers';
 
-import CartSummaryActions from './CartSummaryActions';
-
 function CartSummary() {
   const subtotal = useSelector(calculateTotalByProperty('totalPrice'));
 
   return (
-    <div className="table-summary">
+    <div className="table-summary container-secondary">
       <h2 className="heading-primary">Cart totals</h2>
       <div className="row">
         <div className="cell">Subtotal</div>
@@ -27,7 +25,6 @@ function CartSummary() {
           <strong>{formatCurrency(subtotal)}</strong>
         </div>
       </div>
-      <CartSummaryActions />
     </div>
   );
 }

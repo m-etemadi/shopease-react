@@ -4,7 +4,7 @@ function OrderTableSummary({ order }) {
   const { date, subtotal, fullName } = order;
 
   return (
-    <div className="table-summary">
+    <div className="table-summary container-secondary">
       <h2 className="heading-primary">Order details</h2>
       <div className="row">
         <div className="cell">Status</div>

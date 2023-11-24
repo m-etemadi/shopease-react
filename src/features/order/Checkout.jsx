@@ -20,6 +20,7 @@ import {
   cardDataValidation,
 } from '../../utils/helpers';
 
+import ActionButtons from '../../ui/Common/ActionButtons';
 import Button from '../../ui/Common/Button/Button';
 import Message from '../../ui/Common/Message';
 
@@ -113,14 +114,14 @@ function Checkout() {
               />
             </div>
           </div>
-          <div className={styles.checkoutActions}>
+          <ActionButtons>
             <Button type="primary" onClick={() => navigate('/cart')}>
               Go back
             </Button>
             <Button type="primary">
               {isSubmitting ? 'Placing order...' : 'Place order'}
             </Button>
-          </div>
+          </ActionButtons>
         </Form>
       </div>
     </ProtectedRoute>
