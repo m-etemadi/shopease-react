@@ -1,5 +1,8 @@
 .header {
   border-bottom: 1px solid var(--color-light--2);
+  background-color: var(--color-light--3);
+  position: fixed;
+  width: 100%;
 }
 
 .container {

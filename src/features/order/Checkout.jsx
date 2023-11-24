@@ -79,8 +79,12 @@ function Checkout() {
           </div>
           <div className={styles.checkoutSection}>
             <h3>Cart Details</h3>
-            {formErrors?.cardNumber && <p>{formErrors.cardNumber}</p>}
-            {formErrors?.cardCvv && <p>{formErrors.cardCvv}</p>}
+            {formErrors?.cardNumber && (
+              <p className="error">{formErrors.cardNumber}</p>
+            )}
+            {formErrors?.cardCvv && (
+              <p className="error">{formErrors.cardCvv}</p>
+            )}
             <input
               className="form-input"
               name="cardNumber"

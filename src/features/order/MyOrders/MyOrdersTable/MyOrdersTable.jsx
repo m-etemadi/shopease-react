@@ -1,8 +1,6 @@
 import MyOrdersTableHeader from './MyOrdersTableHeader';
 import MyOrdersTableRow from './MyOrdersTableRow';
 
-import styles from '../../Order.module.css';
-
 function MyOrdersTable({ orders }) {
   return (
     <div className="table">

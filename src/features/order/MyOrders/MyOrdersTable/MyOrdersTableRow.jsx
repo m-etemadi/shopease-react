@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom';
 
-import styles from '../../Order.module.css';
-
 function MyOrdersTableRow({ item }) {
   const { id, date, fullName, subtotal } = item;
 

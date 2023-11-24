@@ -1,5 +1,3 @@
-import styles from '../../Order.module.css';
-
 function MyOrdersTableHeader() {
   return (
     <div className="row header">

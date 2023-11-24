@@ -1,8 +1,8 @@
 import { useLoaderData, useNavigate } from 'react-router-dom';
 
-import { getOrder } from '../../../services/apiProducts';
-
 import ProtectedRoute from '../../../route/ProtectedRoute';
+
+import { getOrder } from '../../../services/apiProducts';
 
 import ViewOrderTable from './ViewOrderTable/ViewOrderTable';
 import ViewOrderSummary from './ViewOrderSummary';
