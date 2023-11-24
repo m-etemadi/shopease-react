@@ -8,7 +8,7 @@ import AppLayout from './ui/AppLayout';
 import Products, {
   loader as productsLoader,
 } from './features/products/Products';
-import Login from './features/Login/Login';
+import Login from './features/Authentication/Login';
 import Cart from './features/cart/Cart';
 import Checkout, {
   action as createOrderAction,

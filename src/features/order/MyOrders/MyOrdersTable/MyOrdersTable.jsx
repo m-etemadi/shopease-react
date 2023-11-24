@@ -5,7 +5,7 @@ import styles from '../../Order.module.css';
 
 function MyOrdersTable({ orders }) {
   return (
-    <div className={styles.orderHistory}>
+    <div className="table">
       <MyOrdersTableHeader />
 
       {orders.map(item => (

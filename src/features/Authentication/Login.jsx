@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../login/authenticationSlice';
+import { login } from '../Authentication/authenticationSlice';
 
 import Button from '../../ui/Common/Button/Button';
 

@@ -4,7 +4,7 @@ import { removeItem, getPropertyById } from '../cartSlice';
 import { formatCurrency, reduceTitleLength } from '../../../utils/helpers';
 
 import Button from '../../../ui/Common/Button/Button';
-import CartQuantityControl from '../CartQuantityControl/CartQuantityControl';
+import CartQuantityControl from '../CartQuantityControl';
 
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

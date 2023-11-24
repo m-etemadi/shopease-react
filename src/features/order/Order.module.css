@@ -22,38 +22,3 @@
 .searchOrders {
   margin-bottom: 2rem;
 }
-
-.orderHistory {
-  font-size: 1.4rem;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid var(--color-light--1);
-}
-
-.orderHistory a {
-  color: inherit;
-}
-
-.orderHistory .header {
-  text-transform: uppercase;
-  display: flex;
-  font-weight: bold;
-  background-color: var(--color-light--2);
-}
-
-.orderHistory .cell {
-  text-align: center;
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  padding: 2rem;
-}
-
-.orderHistory .row {
-  display: flex;
-  color: inherit;
-}
-
-.orderHistory .row:not(:last-child) {
-  border-bottom: 1px solid var(--color-light--1);
-}

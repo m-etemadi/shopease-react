@@ -3,11 +3,9 @@ import {
   decreaseItemQuantity,
   increaseItemQuantity,
   getPropertyById,
-} from '../cartSlice';
+} from './cartSlice';
 
-import Button from '../../../ui/Common/Button/Button';
-
-import styles from './CartQuantityControl.module.css';
+import Button from '../../ui/Common/Button/Button';
 
 function CartQuantityControl({ item }) {
   const { id } = item;
@@ -25,7 +23,7 @@ function CartQuantityControl({ item }) {
         -
       </Button>
 
-      <span className={styles.quantity}>{currentQuantity}</span>
+      <span className="quantity-label">{currentQuantity}</span>
 
       <Button
         type="quantity"

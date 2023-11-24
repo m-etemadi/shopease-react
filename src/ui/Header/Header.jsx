@@ -1,6 +1,6 @@
 import Logo from '../Common/Logo/Logo';
 import Navbar from '../Navbar/Navbar';
-import UserActions from '../Navbar/UserActions/UserActions';
+import UserActions from '../UserActions/UserActions';
 
 import styles from './Header.module.css';
 

@@ -127,6 +127,10 @@ textarea {
   margin-bottom: 8rem;
 }
 
+.table a {
+  color: var(--color-dark--0);
+}
+
 .table .header {
   font-weight: bold;
 }
@@ -150,6 +154,10 @@ textarea {
 
 .table .cell img {
   width: 9rem;
+}
+
+.table .quantity-label {
+  padding: 0 1rem;
 }
 
 .table-summary .row {

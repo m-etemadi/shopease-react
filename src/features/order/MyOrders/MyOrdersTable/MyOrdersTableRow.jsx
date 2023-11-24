@@ -6,12 +6,12 @@ function MyOrdersTableRow({ item }) {
   const { id, date, fullName, subtotal } = item;
 
   return (
-    <Link to={`/my-orders/${item.id}`}>
-      <div className={styles.row}>
-        <div className={styles.cell}>{id}</div>
-        <div className={styles.cell}>{date}</div>
-        <div className={styles.cell}>{fullName}</div>
-        <div className={styles.cell}>{subtotal}</div>
+    <Link to={`/my-orders/${id}`}>
+      <div className="row">
+        <div className="cell">{id}</div>
+        <div className="cell">{date}</div>
+        <div className="cell">{fullName}</div>
+        <div className="cell">{subtotal}</div>
       </div>
     </Link>
   );
