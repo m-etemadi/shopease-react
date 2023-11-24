@@ -1,6 +1,6 @@
 import { formatCurrency } from '../../../utils/helpers';
 
-function OrderTableSummary({ order }) {
+function ViewOrderSummary({ order }) {
   const { date, subtotal, fullName } = order;
 
   return (
@@ -40,4 +40,4 @@ function OrderTableSummary({ order }) {
   );
 }
 
-export default OrderTableSummary;
+export default ViewOrderSummary;

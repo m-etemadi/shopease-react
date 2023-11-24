@@ -1,6 +1,6 @@
-import { formatCurrency, reduceTitleLength } from '../../../utils/helpers';
+import { formatCurrency, reduceTitleLength } from '../../../../utils/helpers';
 
-function OrderTableRow({ item }) {
+function ViewOrderTableRow({ item }) {
   const { image, price, title, quantity, totalPrice } = item;
 
   return (
@@ -22,4 +22,4 @@ function OrderTableRow({ item }) {
   );
 }
 
-export default OrderTableRow;
+export default ViewOrderTableRow;

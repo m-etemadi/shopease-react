@@ -1,13 +1,13 @@
 import { useLoaderData, useNavigate } from 'react-router-dom';
 
-import { getOrder } from '../../services/apiProducts';
+import { getOrder } from '../../../services/apiProducts';
 
-import ProtectedRoute from '../../route/ProtectedRoute';
+import ProtectedRoute from '../../../route/ProtectedRoute';
 
-import OrderTable from './OrderTable/OrderTable';
-import OrderTableSummary from './OrderTable/OrderTableSummary';
-import ActionButtons from '../../ui/Common/ActionButtons';
-import Button from '../../ui/Common/Button/Button';
+import ViewOrderTable from './ViewOrderTable/ViewOrderTable';
+import ViewOrderSummary from './ViewOrderSummary';
+import ActionButtons from '../../../ui/Common/ActionButtons';
+import Button from '../../../ui/Common/Button/Button';
 
 function ViewOrder() {
   const navigate = useNavigate();
@@ -20,9 +20,9 @@ function ViewOrder() {
       <div className="container-primary">
         <h2 className="heading-primary">Order ID: #{id}</h2>
 
-        <OrderTable orderedItems={orderedItems} />
+        <ViewOrderTable orderedItems={orderedItems} />
 
-        <OrderTableSummary order={order} />
+        <ViewOrderSummary order={order} />
 
         <ActionButtons>
           <Button type="primary" onClick={() => navigate('/my-orders')}>

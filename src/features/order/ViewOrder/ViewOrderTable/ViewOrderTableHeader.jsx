@@ -1,4 +1,4 @@
-function OrderTableHeader() {
+function ViewOrderTableHeader() {
   return (
     <div className="row header">
       <div className="cell">Products</div>
@@ -10,4 +10,4 @@ function OrderTableHeader() {
   );
 }
 
-export default OrderTableHeader;
+export default ViewOrderTableHeader;

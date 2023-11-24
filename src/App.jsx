@@ -13,8 +13,12 @@ import Cart from './features/cart/Cart';
 import Checkout, {
   action as createOrderAction,
 } from './features/order/Checkout';
-import MyOrders, { loader as allOrdersLoader } from './features/order/MyOrders';
-import ViewOrder, { loader as orderLoader } from './features/order/ViewOrder';
+import MyOrders, {
+  loader as allOrdersLoader,
+} from './features/order/MyOrders/MyOrders';
+import ViewOrder, {
+  loader as orderLoader,
+} from './features/order/ViewOrder/ViewOrder';
 
 import Error from './ui/Common/Error';
 
