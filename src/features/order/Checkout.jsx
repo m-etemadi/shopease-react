@@ -120,7 +120,7 @@ function Checkout() {
           </div>
           <ActionButtons>
             <Button type="primary" onClick={() => navigate('/cart')}>
-              Go back
+              View cart
             </Button>
             <Button type="primary">
               {isSubmitting ? 'Placing order...' : 'Place order'}
