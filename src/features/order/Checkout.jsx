@@ -40,9 +40,6 @@ function Checkout() {
 
   const orderedItems = [...cartItems];
 
-  const [fullName, setFullName] = useState(user?.name);
-  const [mainAddress, setMainAddress] = useState(user?.address);
-
   if (!cartItems.length) return <Message message="Your cart is empty" />;
 
   return (
@@ -59,8 +56,7 @@ function Checkout() {
               className="form-input"
               name="fullName"
               type="text"
-              value={fullName}
-              onChange={e => setFullName(e.target.value)}
+              defaultValue={user?.name}
               placeholder="Full Name"
               required
             />
@@ -71,8 +67,7 @@ function Checkout() {
               className="form-input"
               name="address"
               type="text"
-              value={mainAddress}
-              onChange={e => setMainAddress(e.target.value)}
+              defaultValue={user?.address}
               placeholder="Delivery Address"
               required
             />
