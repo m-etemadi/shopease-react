@@ -23,31 +23,26 @@ function Cart() {
       : navigate('/login?destination=checkout');
   }
 
+  if (!cartLength > 0) return <Message message="Your cart is empty" />;
+
   return (
     <div className="container-primary">
       <h2 className="heading-primary">Your cart items</h2>
+      <CartTable />
 
-      {cartLength > 0 ? (
-        <>
-          <CartTable />
+      <CartSummary />
 
-          <CartSummary />
-
-          <ActionButtons>
-            <Button type="primary" onClick={() => navigate('/')}>
-              Continue Shopping
-            </Button>
-            <Button type="primary" onClick={handleCheckout}>
-              Checkout
-            </Button>
-            <Button type="primary" onClick={() => dispatch(clearCart())}>
-              Clear Cart
-            </Button>
-          </ActionButtons>
-        </>
-      ) : (
-        <Message message="Your cart is empty" />
-      )}
+      <ActionButtons>
+        <Button type="primary" onClick={() => navigate('/')}>
+          Continue Shopping
+        </Button>
+        <Button type="primary" onClick={handleCheckout}>
+          Checkout
+        </Button>
+        <Button type="primary" onClick={() => dispatch(clearCart())}>
+          Clear Cart
+        </Button>
+      </ActionButtons>
     </div>
   );
 }
